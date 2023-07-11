@@ -30,7 +30,7 @@
         <section class="w-screen mx-auto flex justify-center">
             <nav id="navbar" class="sticky top-0 z-40 w-full bg-white dark:bg-gray-800 shadow-lg">
                 <x-main-layout.header />
-{{--                <x-main.menu />--}}
+                <x-main-layout.menu />
             </nav>
         </section>
 

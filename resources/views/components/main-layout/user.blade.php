@@ -6,16 +6,16 @@
                 <span class="sr-only">Open user menu for </span>
                 {{ current_user()->username }}
             </div>
-            <x-dropdowns.user />
+            <x-dropdown.user />
         @else
         <div class="px-2 flex space-x-4">
-            <x-links.primary class="text-xs" href="{{ route('login') }}" :active="request()->routeIs('login')">
+            <x-link.primary class="text-xs" href="{{ route('login') }}" :active="request()->routeIs('login')">
                 <i class="text-orange-500 fa-solid fa-arrow-right-to-bracket mr-2 fa-lg"></i>Login
-            </x-links.primary>
+            </x-link.primary>
             @if (Route::has('register'))
-                <x-links.primary href="{{ route('register') }}" :active="request()->routeIs('register')">
+                <x-link.primary href="{{ route('register') }}" :active="request()->routeIs('register')">
                     <i class="text-orange-500 fa-solid fa-arrow-right-to-bracket mr-2 fa-lg"></i>Register
-                </x-links.primary>
+                </x-link.primary>
             @endif
         </div>
         @endauth
