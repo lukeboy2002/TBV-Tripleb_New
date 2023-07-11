@@ -29,23 +29,24 @@
 
     <!-- Desktop sidebar -->
     <aside class="z-20 hidden w-64 overflow-y-auto md:block flex-shrink-0 bg-white dark:bg-gray-800">
-{{--        <x-admin.sidebar />--}}
+        {{--        <x-user.sidebar />--}}
     </aside>
 
     <section class="w-screen mx-auto flex justify-center">
         <nav id="navbar" class="sticky top-0 z-40 w-full bg-white dark:bg-gray-800">
+            {{--                <x-main.header />--}}
             {{--                <x-main.menu />--}}
         </nav>
         <div class="lg:flex-grow p-4">
             @if (isset($header))
                 <header>
-{{--                    <x-cards.default class="mx-auto py-6 px-4 mb-4">--}}
+                    <x-cards.default class="mx-auto py-6 px-4 mb-4">
                         <div class="border-l-4 border-orange-500 pl-4 flex justify-between items-center">
                             <div class="text-orange-500 hover:text-orange-600 font-black uppercase focus:outline-none focus:text-orange-600">
                                 {{ $header }}
                             </div>
                         </div>
-{{--                    </x-cards.default>--}}
+                    </x-cards.default>
                 </header>
             @endif
             <!-- Page Content -->
@@ -55,7 +56,7 @@
         </div>
     </section>
 
-{{--    <x-admin.mobilemenu />--}}
+    {{--            <x-main.mobilemenu />--}}
 </div>
 
 @stack('modals')
