@@ -6,9 +6,6 @@
                     <x-main.application-logo />
                 </div>
                 <div class="pb-4 ml-2">
-                    <x-blocks.join-us />
-                </div>
-                <div class="pb-4 ml-2">
                     <x-blocks.contact />
                 </div>
                 <x-menus.mobile />

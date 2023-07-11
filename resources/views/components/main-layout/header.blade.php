@@ -1,17 +1,14 @@
 <div class="hidden sm:block border-b border-gray-200 dark:border-gray-600">
     <div class="max-w-7xl mx-auto">
         <div class="flex justify-between items-center p-4">
-            <div>
-                <x-main.application-logo />
+            <div class="w-1/2">
+                <x-logo />
             </div>
             <div class="hidden sm:block">
-                <x-blocks.join-us />
-            </div>
-            <div class="hidden sm:block">
-                <x-blocks.contact />
+                <x-main-layout.contact />
             </div>
             <div class="hidden md:flex items-center space-x-5">
-                <x-menus.social />
+                <x-menu.social />
             </div>
         </div>
     </div>

@@ -1,7 +1,7 @@
 <div class="bg-white dark:bg-gray-800 w-full">
-    <div class="md:max-w-7x mx-auto md:flex justify-around items-center py-8 px-5 md:px-0">
-        <x-sponsors />
-    </div>
+{{--    <div class="md:max-w-7x mx-auto md:flex justify-around items-center py-8 px-5 md:px-0">--}}
+{{--        <x-sponsors />--}}
+{{--    </div>--}}
 
     <div class="relative">
         <div class="absolute inset-0 flex items-center" aria-hidden="true">
@@ -22,15 +22,15 @@
             </div>
         </div>
         <div class="w-full sm:w-1/4 px-6 pt-10 sm:px-0 sm:pt-0">
-            <div class="text-orange-500 font-black pb-3 uppercase">Laatse Nieuws</div>
+            <div class="text-orange-500 font-black pb-3 uppercase">Laatste Nieuws</div>
             <div class="w-1/4 border-b-2 border-orange-500 mb-4"></div>
-            <x-post-footer />
+{{--            <x-post-footer />--}}
         </div>
         <!-- CONTACT -->
         <div class="w-full sm:w-1/4 px-6 pt-10 sm:px-0 sm:pt-0">
             <div class="text-orange-500 font-black pb-3 uppercase">Neem contact op</div>
             <div class="w-1/4 border-b-2 border-orange-500 mb-4"></div>
-                <x-blocks.join-us />
+{{--                <x-blocks.join-us />--}}
             <div class="pt-4">
                 <x-blocks.contact />
             </div>
@@ -43,7 +43,7 @@
                 <x-menus.footer />
             </div>
             <div class="pt-6 text-center md:pt-0">
-                <x-links.primair href="#">{{ config('app.name') }} &copy; 2023</x-links.primair>
+                <x-links.primary href="#">{{ config('app.name') }} &copy; 2023</x-links.primary>
             </div>
         </div>
     </div>

@@ -20,7 +20,7 @@
     <livewire:styles />
 </head>
 
-<body class="antialiased relative bg-gray-100 dark:bg-neutral-900 max-w-full">
+<body class="antialiased relative bg-white dark:bg-gray-800 max-w-full">
     <div class="min-h-screen flex flex-col">
         <div class="z-50">
 {{--            <x-popups.messages />--}}
@@ -28,8 +28,8 @@
         </div>
 
         <section class="w-screen mx-auto flex justify-center">
-            <nav id="navbar" class="sticky top-0 z-40 w-full bg-white dark:bg-gray-800">
-{{--                <x-main.header />--}}
+            <nav id="navbar" class="sticky top-0 z-40 w-full bg-white dark:bg-gray-800 shadow-lg">
+                <x-main-layout.header />
 {{--                <x-main.menu />--}}
             </nav>
         </section>
