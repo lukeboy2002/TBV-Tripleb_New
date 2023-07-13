@@ -8,8 +8,7 @@
         Manage Account
     </div>
     @unlessrole('user')
-{{--        <x-link.dropdown class="block" href="{{route ('admin.settings')}}">Settings</x-link.dropdown>--}}
-        <x-link.dropdown class="block" href="#">Settings</x-link.dropdown>
+        <x-link.dropdown class="block" href="{{route ('admin.settings')}}">Settings</x-link.dropdown>
     @endunlessrole
     <x-link.dropdown class="block" href="{{ route('profile.show', current_user()->username) }}">Your Profile</x-link.dropdown>
     <x-link.dropdown class="block" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Sign out</x-link.dropdown>
