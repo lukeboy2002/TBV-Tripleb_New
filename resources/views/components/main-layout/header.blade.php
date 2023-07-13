@@ -4,7 +4,7 @@
             <div class="w-1/2">
                 <x-logo />
             </div>
-            <div class="block mr-10 sm:mr-0">
+            <div class="hidden sm:block">
                 <x-main-layout.contact />
             </div>
             <div class="flex items-center space-x-5">
