@@ -42,7 +42,7 @@
             </div>
 
             <!-- Sidebar start-->
-{{--            <x-main.mobilemenu />--}}
+            <x-main-layout.mobilemenu />
         </main>
 
         <footer class="w-screen mx-auto flex justify-center">
