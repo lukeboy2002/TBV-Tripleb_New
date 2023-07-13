@@ -20,32 +20,31 @@
     <livewire:styles />
 </head>
 
-<body class="antialiased relative bg-gray-100 dark:bg-neutral-900 max-w-full">
-<div class="min-h-screen flex flex-col">
+<body class="antialiased relative bg-white dark:bg-gray-800 max-w-full">
+<div class="min-h-screen flex flex-row">
     <div class="z-50">
-        {{--            <x-popups.messages />--}}
-        {{--            <x-popups.banner />--}}
+{{--        <x-popups.messages />--}}
+{{--        <x-popups.banner />--}}
     </div>
-
     <!-- Desktop sidebar -->
     <aside class="z-20 hidden w-64 overflow-y-auto md:block flex-shrink-0 bg-white dark:bg-gray-800">
-{{--        <x-admin.sidebar />--}}
+        <x-admin.sidebar />
     </aside>
 
-    <section class="w-screen mx-auto flex justify-center">
-        <nav id="navbar" class="sticky top-0 z-40 w-full bg-white dark:bg-gray-800">
-            {{--                <x-main.menu />--}}
+    <div class="w-screen mx-auto pt-0 flex flex-col">
+        <nav id="navbar" class="sticky top-0 z-40 w-full bg-white dark:bg-gray-800 shadow-lg">
+            <x-main-layout.menu />
         </nav>
         <div class="lg:flex-grow p-4">
             @if (isset($header))
                 <header>
-{{--                    <x-cards.default class="mx-auto py-6 px-4 mb-4">--}}
+                    <x-card.default class="mx-auto py-6 px-4 mb-4">
                         <div class="border-l-4 border-orange-500 pl-4 flex justify-between items-center">
-                            <div class="text-orange-500 hover:text-orange-600 font-black uppercase focus:outline-none focus:text-orange-600">
+                            <div class="text-orange-500 font-black uppercase">
                                 {{ $header }}
                             </div>
                         </div>
-{{--                    </x-cards.default>--}}
+                    </x-card.default>
                 </header>
             @endif
             <!-- Page Content -->
@@ -53,9 +52,8 @@
                 {{ $slot }}
             </main>
         </div>
-    </section>
-
-{{--    <x-admin.mobilemenu />--}}
+    </div>
+    <x-admin.mobilemenu />
 </div>
 
 @stack('modals')
