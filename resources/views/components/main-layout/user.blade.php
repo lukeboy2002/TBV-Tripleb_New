@@ -9,7 +9,7 @@
             <x-dropdown.user />
         @else
         <div class="px-2 flex space-x-4">
-            <x-link.primary class="text-xs" href="{{ route('login') }}" :active="request()->routeIs('login')">
+            <x-link.primary href="{{ route('login') }}" :active="request()->routeIs('login')">
                 <i class="text-orange-500 fa-solid fa-arrow-right-to-bracket mr-2 fa-lg"></i>Login
             </x-link.primary>
             @if (Route::has('register'))

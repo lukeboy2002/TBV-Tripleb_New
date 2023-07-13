@@ -12,12 +12,12 @@
     <div class="w-full mx-auto sm:max-w-7xl sm:flex sm:justify-around sm:items-start py-5 md:py-12 md:px-0">
         <!-- LOGO -->
         <div class="flex justify-center">
-            <x-main.application-logo />
+            <x-Logo />
             <div class="pt-4 block lg:text-center lg:flex lg:justify-center lg:items-center">
-                <x-links.btn-secondary class="px-3 py-2 text-xs font-medium" href="#">Volg ons</x-links.btn-secondary>
+                <x-link.btn-secondary class="px-3 py-2 text-xs font-medium" href="#">Volg ons</x-link.btn-secondary>
 
                 <div class="block space-x-2 pt-4 lg:pt-0 lg:flex lg:items-center lg:space-x-5 lg:ml-4">
-                    <x-menus.social />
+                    <x-menu.social />
                 </div>
             </div>
         </div>
@@ -30,21 +30,18 @@
         <div class="w-full sm:w-1/4 px-6 pt-10 sm:px-0 sm:pt-0">
             <div class="text-orange-500 font-black pb-3 uppercase">Neem contact op</div>
             <div class="w-1/4 border-b-2 border-orange-500 mb-4"></div>
-{{--                <x-blocks.join-us />--}}
-            <div class="pt-4">
-                <x-blocks.contact />
-            </div>
+            <x-main-layout.contact />
         </div>
     </div>
     <!-- MENU -->
-    <div class="bg-gray-200 dark:bg-gray-900">
+{{--    <div class="bg-gray-200 dark:bg-gray-900">--}}
         <div class="md:max-w-7x mx-auto md:flex justify-around items-center py-5 px-5 md:px-0">
             <div class="flex justify-center md:justify-around space-x-1 md:space-x-6">
-                <x-menus.footer />
+                <x-menu.footer />
             </div>
             <div class="pt-6 text-center md:pt-0">
-                <x-links.primary href="#">{{ config('app.name') }} &copy; 2023</x-links.primary>
+                <x-link.primary href="#">{{ config('app.name') }} &copy; 2023</x-link.primary>
             </div>
         </div>
-    </div>
+{{--    </div>--}}
 </div>
