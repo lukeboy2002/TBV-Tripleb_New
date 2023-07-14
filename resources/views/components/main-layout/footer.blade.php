@@ -1,7 +1,7 @@
 <div class="bg-white dark:bg-gray-800 w-full">
-{{--    <div class="md:max-w-7x mx-auto md:flex justify-around items-center py-8 px-5 md:px-0">--}}
-{{--        <x-sponsors />--}}
-{{--    </div>--}}
+    <div class="md:max-w-7x mx-auto md:flex justify-around items-center py-8 px-5 md:px-0">
+        <x-sponsors />
+    </div>
 
     <div class="relative">
         <div class="absolute inset-0 flex items-center" aria-hidden="true">
