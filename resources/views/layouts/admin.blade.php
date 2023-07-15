@@ -16,8 +16,9 @@
     <script src="https://kit.fontawesome.com/26b11da1dc.js" crossorigin="anonymous"></script>
 
     <!-- Styles -->
-    @stack('styles')
     <livewire:styles />
+    @stack('styles')
+
 </head>
 
 <body class="antialiased relative bg-white dark:bg-gray-800 max-w-full">
