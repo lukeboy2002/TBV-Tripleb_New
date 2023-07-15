@@ -1,4 +1,10 @@
 <x-admin-layout>
+    @push('styles')
+        <link href="https://unpkg.com/filepond/dist/filepond.css" rel="stylesheet">
+        <link href="https://unpkg.com/filepond@^4/dist/filepond.css" rel="stylesheet" />
+        <link href="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css" rel="stylesheet" />
+    @endpush
+
     <x-slot name="header">
         Sponsors index
     </x-slot>
@@ -20,7 +26,7 @@
             </div>
             <div>
                 <x-form.label for="image" value="Image" />
-                <x-form.input type="file" name="image" id="image" required  />
+                <x-form.input type="file" name="image" id="image" class="filepond" required  />
                 <x-form.input-error for="image" class="mt-2" />
             </div>
             <div>
@@ -43,4 +49,16 @@
             </div>
         </form>
     </x-card.default>
+
+    @push('scripts')
+        <script src="https://unpkg.com/filepond-plugin-file-validate-type/dist/filepond-plugin-file-validate-type.js"></script>
+        <script src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.js"></script>
+        <script src="https://unpkg.com/filepond@^4/dist/filepond.js"></script>
+
+        <script>
+            FilePond.registerPlugin(FilePondPluginImagePreview);
+            FilePond.registerPlugin(FilePondPluginFileValidateType);
+        </script>
+    @endpush
+
 </x-admin-layout>
