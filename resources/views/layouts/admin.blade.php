@@ -39,11 +39,7 @@
             @if (isset($header))
                 <header>
                     <x-card.default class="mx-auto py-6 px-4 mb-4">
-                        <div class="border-l-4 border-orange-500 pl-4 flex justify-between items-center">
-                            <div class="text-orange-500 font-black uppercase">
-                                {{ $header }}
-                            </div>
-                        </div>
+                        <x-main-layout.heading>{{ $header }}</x-main-layout.heading>
                     </x-card.default>
                 </header>
             @endif

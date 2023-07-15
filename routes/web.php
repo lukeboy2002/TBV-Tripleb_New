@@ -28,4 +28,5 @@ Route::prefix('admin')->name('admin.')->middleware(['auth:sanctum', config('jets
     Route::get('settings', function () {
         return view('admin.dashboard');
     })->name('settings');
+    Route::resource('sponsors', \App\Http\Controllers\Admin\SponsorController::class);
 });
