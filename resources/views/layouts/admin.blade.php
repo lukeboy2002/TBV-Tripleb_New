@@ -16,14 +16,15 @@
     <script src="https://kit.fontawesome.com/26b11da1dc.js" crossorigin="anonymous"></script>
 
     <!-- Styles -->
-    @stack('styles')
     <livewire:styles />
+    @stack('styles')
+
 </head>
 
 <body class="antialiased relative bg-white dark:bg-gray-800 max-w-full">
 <div class="min-h-screen flex flex-row">
     <div class="z-50">
-{{--        <x-popups.messages />--}}
+        <x-messages />
 {{--        <x-popups.banner />--}}
     </div>
     <!-- Desktop sidebar -->
@@ -39,11 +40,7 @@
             @if (isset($header))
                 <header>
                     <x-card.default class="mx-auto py-6 px-4 mb-4">
-                        <div class="border-l-4 border-orange-500 pl-4 flex justify-between items-center">
-                            <div class="text-orange-500 font-black uppercase">
-                                {{ $header }}
-                            </div>
-                        </div>
+                        <x-main-layout.heading>{{ $header }}</x-main-layout.heading>
                     </x-card.default>
                 </header>
             @endif
