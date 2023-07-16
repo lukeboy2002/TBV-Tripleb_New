@@ -34,10 +34,10 @@ Route::prefix('admin')->name('admin.')->middleware(['auth:sanctum', config('jets
     Route::delete('filepondrevert', [\App\Http\Controllers\Admin\FilepondController::class, 'revert'])->name('filepond.revert');
 
     //SLIDERS
-    Route::get('slides', [\App\Http\Controllers\Admin\SlideController::class, 'index'])->('slide.index');
-    Route::get('slides/create', [\App\Http\Controllers\Admin\SlideController::class, 'create'])->('slide.create');
-    Route::get('slides/{id}/edit', [\App\Http\Controllers\Admin\SlideController::class, 'edit'])->('slide.edit');
-    
+    Route::get('slides', [\App\Http\Controllers\Admin\SlideController::class, 'index'])->name('slides.index');
+    Route::get('slides/create', [\App\Http\Controllers\Admin\SlideController::class, 'create'])->name('slides.create');
+    Route::get('slides/{slide}/edit', [\App\Http\Controllers\Admin\SlideController::class, 'edit'])->name('slides.edit');
+
     //SPONSORS, RESOURCE
     Route::resource('sponsors', \App\Http\Controllers\Admin\SponsorController::class);
 });
