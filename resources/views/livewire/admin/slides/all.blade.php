@@ -1,5 +1,5 @@
 <div>
-    @if (!$sponsors->isEmpty())
+    @if (!$slides->isEmpty())
         <div class="overflow-x-auto relative shadow-md">
             <div class="flex justify-between items-center space-x-4 pb-4 pt-2 px-2">
                 <div class="flex items-center">
@@ -12,7 +12,7 @@
                     </div>
                 </div>
                 <div class="pr-2">
-                    <x-link.btn-primary href="{{ route('admin.sponsors.create') }}" class="px-5 py-2.5 text-sm font-medium">New sponsor</x-link.btn-primary>
+                    <x-link.btn-primary href="{{ route('admin.slides.create') }}" class="px-5 py-2.5 text-sm font-medium">New slide</x-link.btn-primary>
                 </div>
             </div>
 
@@ -23,16 +23,23 @@
                         <th scope="col" class="px-6 py-3"></th>
                         <th scope="col" class="px-6 py-3">
                             <div class="flex items-center">
-                                <button wire:click="sortBy('name')" class="uppercase">Name</button>
+                                <button wire:click="sortBy('title')" class="uppercase">Title</button>
                                 <x-icons.sort-icon
-                                    field="name"
+                                    field="title"
                                     :sortField="$sortField"
                                     :sortAsc="$sortAsc"
                                 />
                             </div>
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            link
+                            <div class="flex items-center">
+                                <button wire:click="sortBy('subtitle')" class="uppercase">SubTitle</button>
+                                <x-icons.sort-icon
+                                    field="subtitle"
+                                    :sortField="$sortField"
+                                    :sortAsc="$sortAsc"
+                                />
+                            </div>
                         </th>
                         <th scope="col" class="px-6 py-3">
                             active
@@ -43,27 +50,33 @@
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach($sponsors as $sponsor )
+                    @foreach($slides as $slide )
                         <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                             <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                <img src="{{ asset('storage/' . $sponsor->image) }}" alt="{{ $sponsor->name }}" class="h-10 w-auto" >
+                                <img src="{{ asset('storage/' . $slide->image) }}" alt="{{ $slide->title }}" class="h-10 w-auto" >
                             </th>
                             <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                {{ $sponsor->name }}
+                                <div class="flex items-center space-x-2">
+                                    <div class="h-4 w-4 rounded-full border border-white" style="background-color: {{$slide->color_title}}"></div>
+                                    <div>{{ $slide->title }}</div>
+                                </div>
                             </th>
                             <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                <x-link.primary href="{{ $sponsor->link }}" target="_blank">{{ $sponsor->link }}</x-link.primary>
+                                <div class="flex items-center space-x-2">
+                                    <div class="h-4 w-4 rounded-full border border-white" style="background-color: {{$slide->color_subtitle}}"></div>
+                                    <div>{{ $slide->subtitle }}</div>
+                                </div>
                             </th>
                             <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                @if( $sponsor->active =='1' )
+                                @if( $slide->active =='1' )
                                     <i class="fa-regular fa-circle-check text-green-600 fa-xl"></i>
                                 @else
                                     <i class="fa-regular fa-circle-xmark text-red-700 fa-xl"></i>
                                 @endif
                             </th>
                             <td class="px-6 py-4 flex justify-end space-x-4">
-                                <x-link.btn-primary href="{{ route('admin.sponsors.edit' , $sponsor) }}" class="px-2.5 py-2.5 text-xs font-medium"><i class="fa-solid fa-pen-to-square"></i></x-link.btn-primary>
-                                <x-button.danger type="button" wire:click="deleteId({{ $sponsor->id }})" class="px-2.5 py-2.5 text-xs font-medium"><i class="fa-solid fa-trash-can"></i></x-button.danger>
+                                <x-link.btn-primary href="{{ route('admin.slides.edit' , $slide) }}" class="px-2.5 py-2.5 text-xs font-medium"><i class="fa-solid fa-pen-to-square"></i></x-link.btn-primary>
+                                <x-button.danger type="button" wire:click="deleteId({{ $slide->id }})" class="px-2.5 py-2.5 text-xs font-medium"><i class="fa-solid fa-trash-can"></i></x-button.danger>
                             </td>
                         </tr>
                     @endforeach
@@ -71,7 +84,7 @@
                 </table>
             </div>
             <div class="px-4 py-4">
-                {{ $sponsors->links() }}
+                {{ $slides->links() }}
             </div>
         </div>
     @else

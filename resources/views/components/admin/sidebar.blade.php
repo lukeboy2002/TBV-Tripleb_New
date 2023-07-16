@@ -12,7 +12,7 @@
             <x-link.btn-menu href="{{ route('admin.sponsors.index') }}" :active="request()->routeIs('admin.sponsors*')">
                 <i class="fa-solid fa-gift mr-2"></i>Sponsors
             </x-link.btn-menu>
-            <x-link.btn-menu href="#" :active="request()->routeIs('admin.sliders*')">
+            <x-link.btn-menu href="{{ route('admin.slides.index') }}" :active="request()->routeIs('admin.slides*')">
                 <i class="fa-solid fa-panorama mr-2"></i>Sliders
             </x-link.btn-menu>
 
