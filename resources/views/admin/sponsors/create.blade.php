@@ -5,7 +5,7 @@
     @endpush
 
     <x-slot name="header">
-        Sponsors index
+        Sponsors
     </x-slot>
 
     <x-card.default>

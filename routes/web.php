@@ -33,5 +33,11 @@ Route::prefix('admin')->name('admin.')->middleware(['auth:sanctum', config('jets
     Route::post('filepondupload', [\App\Http\Controllers\Admin\FilepondController::class, 'upload'])->name('filepond.upload');
     Route::delete('filepondrevert', [\App\Http\Controllers\Admin\FilepondController::class, 'revert'])->name('filepond.revert');
 
+    //SLIDERS
+    Route::get('slides', [\App\Http\Controllers\Admin\SlideController::class, 'index'])->('slide.index');
+    Route::get('slides/create', [\App\Http\Controllers\Admin\SlideController::class, 'create'])->('slide.create');
+    Route::get('slides/{id}/edit', [\App\Http\Controllers\Admin\SlideController::class, 'edit'])->('slide.edit');
+    
+    //SPONSORS, RESOURCE
     Route::resource('sponsors', \App\Http\Controllers\Admin\SponsorController::class);
 });

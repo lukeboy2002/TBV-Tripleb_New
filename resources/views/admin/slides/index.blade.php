@@ -1,11 +1,11 @@
 <x-admin-layout>
 
     <x-slot name="header">
-        Sponsors
+        Sliders
     </x-slot>
 
     <x-card.default>
-        <livewire:admin.sponsors.all />
+        <livewire:admin.slides.all />
     </x-card.default>
 
 </x-admin-layout>
