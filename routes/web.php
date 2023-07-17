@@ -41,3 +41,9 @@ Route::prefix('admin')->name('admin.')->middleware(['auth:sanctum', config('jets
     //SPONSORS, RESOURCE
     Route::resource('sponsors', \App\Http\Controllers\Admin\SponsorController::class);
 });
+
+//ONLY ADMIN
+Route::prefix('admin')->name('admin.')->middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified', 'role:admin'])->group(function () {
+    //PERMISSIONS
+    route::resource('permissions', \App\Http\Controllers\Admin\PermissionController::class);
+});
