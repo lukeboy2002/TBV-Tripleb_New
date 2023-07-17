@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Permission;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class PermissionController extends Controller
 {
@@ -29,7 +30,16 @@ class PermissionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'name' => ['required', 'string', 'max:255', 'unique:permissions'],
+        ]);
+
+        Permission::create([
+            'name' => $request['name'],
+        ]);
+
+        $request->session()->flash('success', 'Permission successfully created.');
+        return redirect()->route('admin.permissions.index');
     }
 
     /**
@@ -45,7 +55,9 @@ class PermissionController extends Controller
      */
     public function edit(Permission $permission)
     {
-        return view('admin.permissions.edit');
+        return view('admin.permissions.edit', [
+            'permission'=>$permission
+        ]);
     }
 
     /**
@@ -53,7 +65,17 @@ class PermissionController extends Controller
      */
     public function update(Request $request, Permission $permission)
     {
-        //
+        $this->validate($request, [
+            'name' => ['required', 'string', 'max:255', Rule::unique('permissions')->ignore($permission)],
+        ]);
+
+        $permission->update([
+            'name' => $request['name'],
+        ]);
+
+        $request->session()->flash('success', 'Permissions successfully updated.');
+        return redirect()->route('admin.permissions.index');
+
     }
 
     /**
