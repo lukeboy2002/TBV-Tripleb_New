@@ -4,10 +4,15 @@
             TBV-TripleB
         </a>
     </div>
+
     <div class="px-3 py-4 overflow-y-auto">
         <div class="space-y-2">
             <x-link.btn-menu href="{{ route('admin.settings') }}" :active="request()->routeIs('admin.settings')">
                 <i class="fa-solid fa-gauge mr-2"></i>Dashboard
+            </x-link.btn-menu>
+            <x-main-layout.hr />
+            <x-link.btn-menu href="{{ route('admin.permissions.index') }}" :active="request()->routeIs('admin.permissions*')">
+                <i class="fa-solid fa-list mr-2"></i>Permissions
             </x-link.btn-menu>
             <x-link.btn-menu href="{{ route('admin.sponsors.index') }}" :active="request()->routeIs('admin.sponsors*')">
                 <i class="fa-solid fa-gift mr-2"></i>Sponsors
