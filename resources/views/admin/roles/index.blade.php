@@ -1,7 +1,7 @@
 <x-admin-layout>
 
     <x-slot name="header">
-        Permissions
+        Roles
     </x-slot>
 
     <x-card.default>
