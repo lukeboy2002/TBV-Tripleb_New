@@ -20,7 +20,7 @@
         </form>
 
         <div class="mb-6">
-            <x-main-layout.heading>Role Permissions</x-main-layout.heading>
+            <x-main-layout.heading>Add permissions to role</x-main-layout.heading>
         </div>
         <div class="flex flex-wrap">
             @if ($role->permissions)
@@ -47,21 +47,16 @@
         <form method="POST" action="{{ route('admin.roles.permissions', $role->id) }}" class="mt-4">
             @csrf
             <div>
-                    <x-form.label for="permission" value="Permissions" />
-                    <select id="permission"
-                            name="permission"
-                            autocomplete="permission-name"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                        @foreach ($permissions as $permission)
-                            <option value="{{ $permission->name }}">{{ $permission->name }}</option>
-                        @endforeach
-                    </select>
-                    <x-form.input-error for="permission" class="mt-2" />
-
-
-
-
-
+                <x-form.label for="permission" value="Permissions" />
+                <select id="permission"
+                        name="permission"
+                        autocomplete="permission-name"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    @foreach ($permissions as $permission)
+                        <option value="{{ $permission->name }}">{{ $permission->name }}</option>
+                    @endforeach
+                </select>
+                <x-form.input-error for="permission" class="mt-2" />
             </div>
             <div class="flex justify-end space-x-2 mt-4">
                 <x-button.primary class="px-3 py-2 text-xs font-medium">Assign</x-button.primary>

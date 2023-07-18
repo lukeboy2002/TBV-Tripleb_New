@@ -91,10 +91,10 @@ class RoleController extends Controller
     public function givePermission(Request $request, Role $role)
     {
         if($role->hasPermissionTo($request->permission)) {
-            $request->session()->flash('success', 'Permission already exists on role.');
+            $request->session()->flash('error', 'Permission already exists on role.');
             return back();
         }
-        
+
         $role->givePermissionTo($request->permission);
 
         $request->session()->flash('success', 'Permission successfully added to role.');
@@ -110,8 +110,7 @@ class RoleController extends Controller
             return back();
         }
 
-//        return back()->with('message', 'Permission not exists.');
-        $request->session()->flash('success', 'Permission not exists.');
+        $request->session()->flash('error', 'Permission not exists.');
         return back();
     }
 }
