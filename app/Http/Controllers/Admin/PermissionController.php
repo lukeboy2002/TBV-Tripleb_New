@@ -75,7 +75,6 @@ class PermissionController extends Controller
 
         $request->session()->flash('success', 'Permissions successfully updated.');
         return redirect()->route('admin.permissions.index');
-
     }
 
     /**

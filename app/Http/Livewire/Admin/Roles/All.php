@@ -40,6 +40,7 @@ class All extends Component
     {
         return view('livewire.admin.roles.all', [
             'roles' => Role::orderby('created_at')
+//                ->whereNotIn('name', ['admin'])
                 ->where(function ($query) {
                     $query->where('name', 'like', '%' . $this->search . '%');
                 })

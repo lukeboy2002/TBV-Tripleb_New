@@ -46,5 +46,8 @@ Route::prefix('admin')->name('admin.')->middleware(['auth:sanctum', config('jets
 Route::prefix('admin')->name('admin.')->middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified', 'role:admin'])->group(function () {
     //PERMISSIONS
     route::resource('permissions', \App\Http\Controllers\Admin\PermissionController::class);
+    route::post('roles/{role}/permissions', [\App\Http\Controllers\Admin\RoleController::class, 'givePermission'])->name('roles.permissions');
+    Route::delete('/roles/{role}/permissions/{permission}', [\App\Http\Controllers\Admin\RoleController::class, 'revokePermission'])->name('roles.permissions.revoke');
+
     route::resource('roles', \App\Http\Controllers\Admin\RoleController::class);
 });

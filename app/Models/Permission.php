@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Permission extends \Spatie\Permission\Models\Permission
 {
     use HasFactory;
+
+    protected $fillable = [
+        'name',
+        'guard_name',
+    ];
 }
