@@ -72,7 +72,11 @@
                                 @endif
                             </th>
                             <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                {{ $member->getFormattedDate() }}
+                                @if($member->last_login_time)
+                                    {{ $member->getLastLoginTime() }}
+                                @else
+                                    <p>not available</p>
+                                @endif
                             </th>
                             <td class="px-6 py-4 flex justify-end space-x-4">
                                 <x-link.btn-primary href="{{ route('admin.members.edit' , $member) }}" class="px-2.5 py-2.5 text-xs font-medium"><i class="fa-solid fa-pen-to-square"></i></x-link.btn-primary>

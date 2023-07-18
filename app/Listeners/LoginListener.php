@@ -20,10 +20,10 @@ class LoginListener
      */
     public function handle(object $event): void
     {
-        $event->user->update([
+        $event->user->update(array(
             'last_login_time' => now(),
             'last_login_ip' => request()->getClientIp(),
             'logged_in' => true,
-        ]);
+        ));
     }
 }

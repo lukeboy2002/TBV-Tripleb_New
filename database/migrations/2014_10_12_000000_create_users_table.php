@@ -21,7 +21,7 @@ return new class extends Migration
             $table->foreignId('current_team_id')->nullable();
             $table->string('profile_photo_path', 2048)->nullable();
             $table->string('profile_picture', 2048)->nullable();
-            $table->text('logged_in')->nullable();
+            $table->boolean('logged_in')->nullable()->default(false);
             $table->datetime('last_login_time')->nullable();
             $table->text('last_login_ip')->nullable();
             $table->softDeletes();

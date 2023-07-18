@@ -69,8 +69,8 @@ class User extends Authenticatable implements MustVerifyEmail
         'profile_photo_url',
     ];
 
-    public function getFormattedDate()
+    public function getLastLoginTime()
     {
-        return $this->last_login_time->format('d F Y');
+        return $this->last_login_time->format('d F Y - H:m:s');
     }
 }
