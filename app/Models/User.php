@@ -57,6 +57,7 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'last_login_time' => 'datetime',
     ];
 
     /**
@@ -67,4 +68,9 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $appends = [
         'profile_photo_url',
     ];
+
+    public function getFormattedDate()
+    {
+        return $this->last_login_time->format('d F Y');
+    }
 }
