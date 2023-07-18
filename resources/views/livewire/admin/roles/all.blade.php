@@ -1,5 +1,5 @@
 <div>
-    @if (!$permissions->isEmpty())
+    @if (!$roles->isEmpty())
         <div class="overflow-x-auto relative shadow-md">
             <div class="flex justify-between items-center space-x-4 pb-4 pt-2 px-2">
                 <div class="flex items-center">
@@ -12,7 +12,7 @@
                     </div>
                 </div>
                 <div class="pr-2">
-                    <x-link.btn-primary href="{{ route('admin.permissions.create') }}" class="px-5 py-2.5 text-sm font-medium">New permission</x-link.btn-primary>
+                    <x-link.btn-primary href="{{ route('admin.roles.create') }}" class="px-5 py-2.5 text-sm font-medium">New role</x-link.btn-primary>
                 </div>
             </div>
 
@@ -36,14 +36,14 @@
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach($permissions as $permission )
+                    @foreach($roles as $role )
                         <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                             <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                <a href="{{ route('admin.permissions.edit' , $permission) }}">{{ $permission->name }}</a>
+                                <a href="{{ route('admin.roles.edit', $role) }}">{{ $role->name }}</a>
                             </th>
                             <td class="px-6 py-4 flex justify-end space-x-4">
-                                <x-link.btn-primary href="{{ route('admin.permissions.edit' , $permission) }}" class="px-2.5 py-2.5 text-xs font-medium"><i class="fa-solid fa-pen-to-square"></i></x-link.btn-primary>
-                                <x-button.danger type="button" wire:click="deleteId({{ $permission->id }})" class="px-2.5 py-2.5 text-xs font-medium"><i class="fa-solid fa-trash-can"></i></x-button.danger>
+                                <x-link.btn-primary href="{{ route('admin.roles.edit', $role) }}" class="px-2.5 py-2.5 text-xs font-medium"><i class="fa-solid fa-pen-to-square"></i></x-link.btn-primary>
+                                <x-button.danger type="button" wire:click="deleteId({{ $role->id }})" class="px-2.5 py-2.5 text-xs font-medium"><i class="fa-solid fa-trash-can"></i></x-button.danger>
                             </td>
                         </tr>
                     @endforeach
@@ -51,7 +51,7 @@
                 </table>
             </div>
             <div class="px-4 py-4">
-                {{ $permissions->links() }}
+                {{ $roles->links() }}
             </div>
         </div>
     @else

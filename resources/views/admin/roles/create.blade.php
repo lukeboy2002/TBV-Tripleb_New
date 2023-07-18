@@ -1,10 +1,10 @@
 <x-admin-layout>
     <x-slot name="header">
-        Permissions
+        Roles
     </x-slot>
 
     <x-card.default>
-        <form action="{{ route('admin.permissions.store') }}" method="POST" class="space-y-6">
+        <form action="{{ route('admin.roles.store') }}" method="POST" class="space-y-6">
             @csrf
             <div>
                 <x-form.label for="name" value="Name" />

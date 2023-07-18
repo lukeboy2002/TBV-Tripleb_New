@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Permission;
+use App\Models\Role;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 
@@ -55,8 +56,11 @@ class PermissionController extends Controller
      */
     public function edit(Permission $permission)
     {
+        $roles = Role::all();
+
         return view('admin.permissions.edit', [
-            'permission'=>$permission
+            'permission'=>$permission,
+            'roles'=>$roles,
         ]);
     }
 
@@ -75,7 +79,6 @@ class PermissionController extends Controller
 
         $request->session()->flash('success', 'Permissions successfully updated.');
         return redirect()->route('admin.permissions.index');
-
     }
 
     /**
@@ -84,5 +87,30 @@ class PermissionController extends Controller
     public function destroy(Permission $permission)
     {
         //
+    }
+
+    public function assignRole(Request $request, Permission $permission)
+    {
+        if ($permission->hasRole($request->role)) {
+            $request->session()->flash('error', 'Role already exists on permission.');
+            return back();
+        }
+
+        $permission->assignRole($request->role);
+        $request->session()->flash('success', 'Role successfully added to permission.');
+        return back();
+    }
+
+    public function removeRole(Request $request, Permission $permission, Role $role)
+    {
+        if ($permission->hasRole($role)) {
+            $permission->removeRole($role);
+
+            $request->session()->flash('success', 'Role successfully removed from permission.');
+            return back();
+        }
+
+        $request->session()->flash('error', 'Role not exists.');
+        return back();
     }
 }

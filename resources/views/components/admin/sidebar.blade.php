@@ -14,6 +14,9 @@
             <x-link.btn-menu href="{{ route('admin.permissions.index') }}" :active="request()->routeIs('admin.permissions*')">
                 <i class="fa-solid fa-list mr-2"></i>Permissions
             </x-link.btn-menu>
+            <x-link.btn-menu href="{{ route('admin.roles.index') }}" :active="request()->routeIs('admin.roles*')">
+                <i class="fa-solid fa-list mr-2"></i>Roles
+            </x-link.btn-menu>
             <x-link.btn-menu href="{{ route('admin.sponsors.index') }}" :active="request()->routeIs('admin.sponsors*')">
                 <i class="fa-solid fa-gift mr-2"></i>Sponsors
             </x-link.btn-menu>

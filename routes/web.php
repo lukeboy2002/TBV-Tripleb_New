@@ -45,5 +45,19 @@ Route::prefix('admin')->name('admin.')->middleware(['auth:sanctum', config('jets
 //ONLY ADMIN
 Route::prefix('admin')->name('admin.')->middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified', 'role:admin'])->group(function () {
     //PERMISSIONS
+    Route::post('/permissions/{permission}/roles', [\App\Http\Controllers\Admin\PermissionController::class, 'assignRole'])->name('permissions.roles');
+    Route::delete('/permissions/{permission}/roles/{role}', [\App\Http\Controllers\Admin\PermissionController::class, 'removeRole'])->name('permissions.roles.revoke');
     route::resource('permissions', \App\Http\Controllers\Admin\PermissionController::class);
+    route::post('roles/{role}/permissions', [\App\Http\Controllers\Admin\RoleController::class, 'givePermission'])->name('roles.permissions');
+    Route::delete('/roles/{role}/permissions/{permission}', [\App\Http\Controllers\Admin\RoleController::class, 'revokePermission'])->name('roles.permissions.revoke');
+    route::resource('roles', \App\Http\Controllers\Admin\RoleController::class);
+
+
+//    Route::get('/users', [UserController::class, 'index'])->name('users.index');
+//    Route::get('/users/{user}', [UserController::class, 'show'])->name('users.show');
+//    Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('users.destroy');
+//    Route::post('/users/{user}/roles', [UserController::class, 'assignRole'])->name('users.roles');
+//    Route::delete('/users/{user}/roles/{role}', [UserController::class, 'removeRole'])->name('users.roles.remove');
+//    Route::post('/users/{user}/permissions', [UserController::class, 'givePermission'])->name('users.permissions');
+//    Route::delete('/users/{user}/permissions/{permission}', [UserController::class, 'revokePermission'])->name('us
 });
