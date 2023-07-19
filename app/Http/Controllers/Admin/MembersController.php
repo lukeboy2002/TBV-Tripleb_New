@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Actions\Fortify\PasswordValidationRules;
 use App\Http\Controllers\Controller;
+use App\Models\Permission;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -101,8 +102,13 @@ class MembersController extends Controller
      */
     public function edit(User $member)
     {
+        $roles = Role::all();
+        $permissions = Permission::all();
+
         return view('admin.members.edit', [
-            'member' => $member
+            'member' => $member,
+            'roles' => $roles,
+            'permissions' => $permissions,
         ]);
     }
 
@@ -164,6 +170,55 @@ class MembersController extends Controller
         $member->forceDelete();
         $request->session()->flash('success', 'Member has been completed deleted');
 
+        return back();
+    }
+
+    public function assignRole(Request $request, User $member)
+    {
+        if ($member->hasRole($request->role)) {
+            $request->session()->flash('error', 'Role already exists on permission.');
+            return back();
+        }
+
+        $member->assignRole($request->role);
+        $request->session()->flash('success', 'Role successfully added to permission.');
+        return back();
+    }
+
+    public function removeRole(Request $request, User $member, Role $role)
+    {
+        if ($member->hasRole($role)) {
+            $member->removeRole($role);
+
+            $request->session()->flash('success', 'Role successfully removed from member.');
+            return back();
+        }
+
+        $request->session()->flash('error', 'Role not exists.');
+        return back();
+    }
+
+    public function givePermission(Request $request, User $member)
+    {
+        if ($member->hasPermissionTo($request->permission)) {
+            $request->session()->flash('error', 'Permission already exists on member.');
+            return back();
+        }
+        $member->givePermissionTo($request->permission);
+
+        $request->session()->flash('success', 'Permission successfully added to member.');
+        return back();
+    }
+
+    public function revokePermission(Request $request, User $member, Permission $permission)
+    {
+        if ($member->hasPermissionTo($permission)) {
+            $member->revokePermissionTo($permission);
+
+            $request->session()->flash('success', 'Permission successfully removed from member.');
+            return back();
+        }
+        $request->session()->flash('error', 'Permission not exists.');
         return back();
     }
 }

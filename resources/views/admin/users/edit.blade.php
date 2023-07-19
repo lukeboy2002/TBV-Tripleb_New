@@ -17,6 +17,7 @@
                     <x-form.input-error for="link" class="mt-2" />
                 </div>
             </div>
+
 {{--            ROLES--}}
             <div class="mb-6">
                 <x-main-layout.heading>Add roles to User</x-main-layout.heading>
@@ -62,14 +63,6 @@
                     <x-button.primary class="px-3 py-2 text-xs font-medium">Assign</x-button.primary>
                 </div>
             </form>
-
-
-
-
-
-
-
-
 
 {{--            PERMISSIONS--}}
             <div class="mb-6">

@@ -105,12 +105,12 @@ class UserController extends Controller
     public function assignRole(Request $request, User $user)
     {
         if ($user->hasRole($request->role)) {
-            $request->session()->flash('error', 'Role already exists on permission.');
+            $request->session()->flash('error', 'Role already exists on user.');
             return back();
         }
 
         $user->assignRole($request->role);
-        $request->session()->flash('success', 'Role successfully added to permission.');
+        $request->session()->flash('success', 'Role successfully added to user.');
         return back();
     }
 
@@ -119,7 +119,7 @@ class UserController extends Controller
         if ($user->hasRole($role)) {
             $user->removeRole($role);
 
-            $request->session()->flash('success', 'Role successfully removed from permission.');
+            $request->session()->flash('success', 'Role successfully removed from user.');
             return back();
         }
 
