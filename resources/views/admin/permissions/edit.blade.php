@@ -57,7 +57,7 @@
                     @endforeach
                 </select>
                 <x-form.input-error for="permission" class="mt-2" />
-{{--            </div>--}}
+            </div>
             <div class="flex justify-end space-x-2 mt-4">
                 <x-button.primary class="px-3 py-2 text-xs font-medium">Assign</x-button.primary>
             </div>

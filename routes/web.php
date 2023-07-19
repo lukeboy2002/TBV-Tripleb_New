@@ -50,6 +50,10 @@ Route::prefix('admin')->name('admin.')->middleware(['auth:sanctum', config('jets
     Route::get('users/trashed/{id}/restore', [\App\Http\Controllers\Admin\UserController::class, 'trashedRestore'])->name('users.trashed.restore');
     Route::get('users/trashed/{id}/forse_delete', [\App\Http\Controllers\Admin\UserController::class, 'trashedDelete'])->name('users.trashed.destroy');
     Route::resource('users', \App\Http\Controllers\Admin\UserController::class);
+    Route::post('/users/{user}/roles', [\App\Http\Controllers\Admin\UserController::class, 'assignRole'])->name('users.roles');
+    Route::delete('/users/{user}/roles/{role}', [\App\Http\Controllers\Admin\UserController::class, 'removeRole'])->name('users.roles.revoke');
+    Route::post('/users/{user}/permissions', [\App\Http\Controllers\Admin\UserController::class, 'givePermission'])->name('users.permissions');
+    Route::delete('/users/{user}/permissions/{permission}', [\App\Http\Controllers\Admin\UserController::class, 'revokePermission'])->name('users.permissions.revoke');
 
     Route::post('/permissions/{permission}/roles', [\App\Http\Controllers\Admin\PermissionController::class, 'assignRole'])->name('permissions.roles');
     Route::delete('/permissions/{permission}/roles/{role}', [\App\Http\Controllers\Admin\PermissionController::class, 'removeRole'])->name('permissions.roles.revoke');
@@ -60,11 +64,4 @@ Route::prefix('admin')->name('admin.')->middleware(['auth:sanctum', config('jets
     route::resource('roles', \App\Http\Controllers\Admin\RoleController::class);
 
 
-//    Route::get('/users', [UserController::class, 'index'])->name('users.index');
-//    Route::get('/users/{user}', [UserController::class, 'show'])->name('users.show');
-//    Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('users.destroy');
-//    Route::post('/users/{user}/roles', [UserController::class, 'assignRole'])->name('users.roles');
-//    Route::delete('/users/{user}/roles/{role}', [UserController::class, 'removeRole'])->name('users.roles.remove');
-//    Route::post('/users/{user}/permissions', [UserController::class, 'givePermission'])->name('users.permissions');
-//    Route::delete('/users/{user}/permissions/{permission}', [UserController::class, 'revokePermission'])->name('us
 });
