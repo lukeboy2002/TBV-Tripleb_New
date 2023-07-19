@@ -11,12 +11,14 @@
                 <i class="fa-solid fa-gauge mr-2"></i>Dashboard
             </x-link.btn-menu>
             <x-main-layout.hr />
+            @if(current_user()->hasRole('admin'))
             <x-link.btn-menu href="{{ route('admin.permissions.index') }}" :active="request()->routeIs('admin.permissions*')">
                 <i class="fa-solid fa-list mr-2"></i>Permissions
             </x-link.btn-menu>
             <x-link.btn-menu href="{{ route('admin.roles.index') }}" :active="request()->routeIs('admin.roles*')">
                 <i class="fa-solid fa-list mr-2"></i>Roles
             </x-link.btn-menu>
+            @endif
             <x-link.btn-menu href="{{ route('admin.sponsors.index') }}" :active="request()->routeIs('admin.sponsors*')">
                 <i class="fa-solid fa-gift mr-2"></i>Sponsors
             </x-link.btn-menu>
@@ -34,11 +36,13 @@
                 <x-link.btn-menu href="{{ route('admin.members.index') }}" :active="request()->routeIs('admin.members.index')">
                     <div class="pl-11">All Members</div>
                 </x-link.btn-menu>
+                @if(current_user()->can('create:member'))
                 <li>
                     <x-link.btn-menu href="{{ route('admin.members.create') }}" :active="request()->routeIs('admin.members.create')">
                         <div class="pl-11">Create Member</div>
                     </x-link.btn-menu>
                 </li>
+                @endif
                 <x-link.btn-menu href="{{ route('admin.users.index') }}" :active="request()->routeIs('admin.users.index')">
                     <div class="pl-11">All Users</div>
                 </x-link.btn-menu>

@@ -35,9 +35,13 @@ class PermissionController extends Controller
             'name' => ['required', 'string', 'max:255', 'unique:permissions'],
         ]);
 
-        Permission::create([
+        $permission = Permission::create([
             'name' => $request['name'],
         ]);
+
+        $role = Role::select('id')->where('name', 'admin')->first();
+
+        $permission->roles()->attach($role);
 
         $request->session()->flash('success', 'Permission successfully created.');
         return redirect()->route('admin.permissions.index');

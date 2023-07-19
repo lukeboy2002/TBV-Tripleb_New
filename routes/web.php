@@ -24,7 +24,7 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
 });
 
 //MEMBERS AND ADMIN
-Route::prefix('admin')->name('admin.')->middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified', 'role:member|admin'])->group(function () {
+Route::prefix('admin')->name('admin.')->middleware(['auth:web', config('jetstream.auth_session'), 'verified', 'role:member|admin'])->group(function () {
     Route::get('settings', function () {
         return view('admin.dashboard');
     })->name('settings');
@@ -37,10 +37,13 @@ Route::prefix('admin')->name('admin.')->middleware(['auth:sanctum', config('jets
     Route::get('slides/{slide}/edit', [\App\Http\Controllers\Admin\SlideController::class, 'edit'])->name('slides.edit');
 
     Route::resource('sponsors', \App\Http\Controllers\Admin\SponsorController::class);
+    Route::resource('members', \App\Http\Controllers\Admin\MembersController::class);
+    Route::resource('users', \App\Http\Controllers\Admin\UserController::class);
+
 });
 
 //ONLY ADMIN
-Route::prefix('admin')->name('admin.')->middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified', 'role:admin'])->group(function () {
+Route::prefix('admin')->name('admin.')->middleware(['auth:web', config('jetstream.auth_session'), 'verified', 'role:admin'])->group(function () {
     Route::get('members/trashed', [\App\Http\Controllers\Admin\MembersController::class, 'trashed'])->name('members.trashed');
     Route::get('members/trashed/{id}/restore', [\App\Http\Controllers\Admin\MembersController::class, 'trashedRestore'])->name('members.trashed.restore');
     Route::get('members/trashed/{id}/forse_delete', [\App\Http\Controllers\Admin\MembersController::class, 'trashedDelete'])->name('members.trashed.destroy');
@@ -48,7 +51,6 @@ Route::prefix('admin')->name('admin.')->middleware(['auth:sanctum', config('jets
     Route::delete('/members/{member}/roles/{role}', [\App\Http\Controllers\Admin\MembersController::class, 'removeRole'])->name('members.roles.revoke');
     Route::post('/members/{member}/permissions', [\App\Http\Controllers\Admin\MembersController::class, 'givePermission'])->name('members.permissions');
     Route::delete('/members/{member}/permissions/{permission}', [\App\Http\Controllers\Admin\MembersController::class, 'revokePermission'])->name('members.permissions.revoke');
-    Route::resource('members', \App\Http\Controllers\Admin\MembersController::class);
 
     Route::get('users/trashed', [\App\Http\Controllers\Admin\UserController::class, 'trashed'])->name('users.trashed');
     Route::get('users/trashed/{id}/restore', [\App\Http\Controllers\Admin\UserController::class, 'trashedRestore'])->name('users.trashed.restore');
@@ -57,7 +59,6 @@ Route::prefix('admin')->name('admin.')->middleware(['auth:sanctum', config('jets
     Route::delete('/users/{user}/roles/{role}', [\App\Http\Controllers\Admin\UserController::class, 'removeRole'])->name('users.roles.revoke');
     Route::post('/users/{user}/permissions', [\App\Http\Controllers\Admin\UserController::class, 'givePermission'])->name('users.permissions');
     Route::delete('/users/{user}/permissions/{permission}', [\App\Http\Controllers\Admin\UserController::class, 'revokePermission'])->name('users.permissions.revoke');
-    Route::resource('users', \App\Http\Controllers\Admin\UserController::class);
 
     Route::post('/permissions/{permission}/roles', [\App\Http\Controllers\Admin\PermissionController::class, 'assignRole'])->name('permissions.roles');
     Route::delete('/permissions/{permission}/roles/{role}', [\App\Http\Controllers\Admin\PermissionController::class, 'removeRole'])->name('permissions.roles.revoke');
