@@ -29,16 +29,13 @@ Route::prefix('admin')->name('admin.')->middleware(['auth:sanctum', config('jets
         return view('admin.dashboard');
     })->name('settings');
 
-    //FILEPOND IMAGES
     Route::post('filepondupload', [\App\Http\Controllers\Admin\FilepondController::class, 'upload'])->name('filepond.upload');
     Route::delete('filepondrevert', [\App\Http\Controllers\Admin\FilepondController::class, 'revert'])->name('filepond.revert');
 
-    //SLIDERS
     Route::get('slides', [\App\Http\Controllers\Admin\SlideController::class, 'index'])->name('slides.index');
     Route::get('slides/create', [\App\Http\Controllers\Admin\SlideController::class, 'create'])->name('slides.create');
     Route::get('slides/{slide}/edit', [\App\Http\Controllers\Admin\SlideController::class, 'edit'])->name('slides.edit');
 
-    //SPONSORS, RESOURCE
     Route::resource('sponsors', \App\Http\Controllers\Admin\SponsorController::class);
 });
 
@@ -47,23 +44,28 @@ Route::prefix('admin')->name('admin.')->middleware(['auth:sanctum', config('jets
     Route::get('members/trashed', [\App\Http\Controllers\Admin\MembersController::class, 'trashed'])->name('members.trashed');
     Route::get('members/trashed/{id}/restore', [\App\Http\Controllers\Admin\MembersController::class, 'trashedRestore'])->name('members.trashed.restore');
     Route::get('members/trashed/{id}/forse_delete', [\App\Http\Controllers\Admin\MembersController::class, 'trashedDelete'])->name('members.trashed.destroy');
-
+    Route::post('/members/{member}/roles', [\App\Http\Controllers\Admin\MembersController::class, 'assignRole'])->name('members.roles');
+    Route::delete('/members/{member}/roles/{role}', [\App\Http\Controllers\Admin\MembersController::class, 'removeRole'])->name('members.roles.revoke');
+    Route::post('/members/{member}/permissions', [\App\Http\Controllers\Admin\MembersController::class, 'givePermission'])->name('members.permissions');
+    Route::delete('/members/{member}/permissions/{permission}', [\App\Http\Controllers\Admin\MembersController::class, 'revokePermission'])->name('members.permissions.revoke');
     Route::resource('members', \App\Http\Controllers\Admin\MembersController::class);
 
-    //PERMISSIONS
+    Route::get('users/trashed', [\App\Http\Controllers\Admin\UserController::class, 'trashed'])->name('users.trashed');
+    Route::get('users/trashed/{id}/restore', [\App\Http\Controllers\Admin\UserController::class, 'trashedRestore'])->name('users.trashed.restore');
+    Route::get('users/trashed/{id}/forse_delete', [\App\Http\Controllers\Admin\UserController::class, 'trashedDelete'])->name('users.trashed.destroy');
+    Route::post('/users/{user}/roles', [\App\Http\Controllers\Admin\UserController::class, 'assignRole'])->name('users.roles');
+    Route::delete('/users/{user}/roles/{role}', [\App\Http\Controllers\Admin\UserController::class, 'removeRole'])->name('users.roles.revoke');
+    Route::post('/users/{user}/permissions', [\App\Http\Controllers\Admin\UserController::class, 'givePermission'])->name('users.permissions');
+    Route::delete('/users/{user}/permissions/{permission}', [\App\Http\Controllers\Admin\UserController::class, 'revokePermission'])->name('users.permissions.revoke');
+    Route::resource('users', \App\Http\Controllers\Admin\UserController::class);
+
     Route::post('/permissions/{permission}/roles', [\App\Http\Controllers\Admin\PermissionController::class, 'assignRole'])->name('permissions.roles');
     Route::delete('/permissions/{permission}/roles/{role}', [\App\Http\Controllers\Admin\PermissionController::class, 'removeRole'])->name('permissions.roles.revoke');
     route::resource('permissions', \App\Http\Controllers\Admin\PermissionController::class);
+
     route::post('roles/{role}/permissions', [\App\Http\Controllers\Admin\RoleController::class, 'givePermission'])->name('roles.permissions');
     Route::delete('/roles/{role}/permissions/{permission}', [\App\Http\Controllers\Admin\RoleController::class, 'revokePermission'])->name('roles.permissions.revoke');
     route::resource('roles', \App\Http\Controllers\Admin\RoleController::class);
 
 
-//    Route::get('/users', [UserController::class, 'index'])->name('users.index');
-//    Route::get('/users/{user}', [UserController::class, 'show'])->name('users.show');
-//    Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('users.destroy');
-//    Route::post('/users/{user}/roles', [UserController::class, 'assignRole'])->name('users.roles');
-//    Route::delete('/users/{user}/roles/{role}', [UserController::class, 'removeRole'])->name('users.roles.remove');
-//    Route::post('/users/{user}/permissions', [UserController::class, 'givePermission'])->name('users.permissions');
-//    Route::delete('/users/{user}/permissions/{permission}', [UserController::class, 'revokePermission'])->name('us
 });

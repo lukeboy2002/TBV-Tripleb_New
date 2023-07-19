@@ -1,5 +1,5 @@
 <div>
-    @if (!$members->isEmpty())
+    @if (!$users->isEmpty())
         <div class="overflow-x-auto relative shadow-md">
             <div class="flex justify-between items-center space-x-4 pb-4 pt-2 px-2">
                 <div class="flex items-center">
@@ -12,7 +12,7 @@
                     </div>
                 </div>
                 <div class="pr-2">
-                    <x-link.btn-primary href="{{ route('admin.members.create') }}" class="px-5 py-2.5 text-sm font-medium">New member</x-link.btn-primary>
+                    <x-link.btn-primary href="{{ route('admin.users.create') }}" class="px-5 py-2.5 text-sm font-medium">Invite User</x-link.btn-primary>
                 </div>
             </div>
 
@@ -53,43 +53,43 @@
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach($members as $member )
+                    @foreach($users as $user )
                         <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                             <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                <img src="{{ asset('storage/' . $member->image) }}" alt="{{ $member->username }}" class="h-10 w-auto" >
+                                <img src="{{ asset('storage/' . $user->profile_photo_path) }}" alt="{{ $user->username }}" class="h-10 w-auto" >
                             </th>
                             <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                <a href="{{ route('admin.members.edit' , $member) }}">{{ $member->username }}</a>
+                                <a href="{{ route('admin.users.edit' , $user) }}">{{ $user->username }}</a>
                             </th>
                             <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                {{ $member->email }}
+                                {{ $user->email }}
                             </th>
                             <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                @if( $member->logged_in =='1' )
+                                @if( $user->logged_in =='1' )
                                     <i class="fa-regular fa-circle-check text-green-600 fa-xl"></i>
                                 @else
                                     <i class="fa-regular fa-circle-xmark text-red-700 fa-xl"></i>
                                 @endif
                             </th>
                             <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                @if($member->last_login_time)
-                                    {{ $member->getLastLoginTime() }}
+                                @if($user->last_login_time)
+                                    {{ $user->getLastLoginTime() }}
                                 @else
                                     <p>not available</p>
                                 @endif
                             </th>
                             <td class="px-6 py-4 flex justify-end space-x-4">
-                                @if ($member->trashed())
+                                @if ($user->trashed())
                                     @role('admin')
-                                    <x-link.primary href="{{ route('admin.members.trashed.restore' , $member->id) }}" class="px-2.5 py-2.5 text-xs font-medium">Restore</x-link.primary>
-                                    <x-link.btn-danger href="{{ route('admin.members.trashed.destroy' , $member->id) }}" class="px-2.5 py-2.5 text-xs font-medium">Force Delete</x-link.btn-danger>
+                                    <x-link.primary href="{{ route('admin.users.trashed.restore' , $user->id) }}" class="px-2.5 py-2.5 text-xs font-medium">Restore</x-link.primary>
+                                    <x-link.btn-danger href="{{ route('admin.users.trashed.destroy' , $user->id) }}" class="px-2.5 py-2.5 text-xs font-medium">Force Delete</x-link.btn-danger>
                                     @endrole
                                     @role('member')
                                     <span class="px-2.5 py-2.5 text-xs font-medium text-center text-white bg-red-600 rounded-lg hover:bg-red-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 transition ease-in-out duration-150">Deleted</span>
                                     @endrole
                                 @else
-                                    <x-link.btn-primary href="{{ route('admin.members.edit' , $member) }}" class="px-2.5 py-2.5 text-xs font-medium"><i class="fa-solid fa-pen-to-square"></i></x-link.btn-primary>
-                                    <x-button.danger type="button" wire:click="deleteId({{ $member->id }})" class="px-2.5 py-2.5 text-xs font-medium"><i class="fa-solid fa-trash-can"></i></x-button.danger>
+                                    <x-link.btn-primary href="{{ route('admin.users.edit' , $user) }}" class="px-2.5 py-2.5 text-xs font-medium"><i class="fa-solid fa-pen-to-square"></i></x-link.btn-primary>
+                                    <x-button.danger type="button" wire:click="deleteId({{ $user->id }})" class="px-2.5 py-2.5 text-xs font-medium"><i class="fa-solid fa-trash-can"></i></x-button.danger>
                                 @endif
                             </td>
                         </tr>
@@ -98,7 +98,7 @@
                 </table>
             </div>
             <div class="px-4 py-4">
-                {{ $members->links() }}
+                {{ $users->links() }}
             </div>
         </div>
     @else
@@ -116,7 +116,7 @@
                         <i class="fa-solid fa-trash-can"></i>
                     </div>
                     <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
-                        <h3 class="text-lg leading-6 font-medium text-gray-900 dark:text-white" id="modal-title">Delete Member</h3>
+                        <h3 class="text-lg leading-6 font-medium text-gray-900 dark:text-white" id="modal-title">Delete User</h3>
                         <div class="mt-2">
                             <p class="text-sm text-gray-500 dark:text-gray-200 mb-3">
                                 Make sure you want to do this.

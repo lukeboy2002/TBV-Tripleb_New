@@ -1,9 +1,8 @@
 <?php
 
-namespace App\Http\Livewire\Admin\Members;
+namespace App\Http\Livewire\Admin\Users;
 
 use App\Models\User;
-use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -38,8 +37,8 @@ class All extends Component
     }
     public function render()
     {
-        return view('livewire.admin.members.all', [
-            'members' => User::role('member')
+        return view('livewire.admin.users.all', [
+            'users' => User::role('user')
                 ->orderby('logged_in', 'desc')
                 ->where(function ($query) {
                     $query->where('username', 'like', '%' . $this->search . '%')
@@ -63,13 +62,13 @@ class All extends Component
 
     public function delete()
     {
-        $member = User::find($this->deleteId);
+        $user = User::find($this->deleteId);
 
-        $member->delete();
+        $user->delete();
 
         $this->showModal = false;
 
-        session()->flash('success', 'Member deleted successfully!');
+        session()->flash('success', 'User deleted successfully!');
     }
 
     public function close()
