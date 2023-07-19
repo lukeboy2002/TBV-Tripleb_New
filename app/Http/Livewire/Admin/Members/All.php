@@ -64,11 +64,6 @@ class All extends Component
     public function delete()
     {
         $member = User::find($this->deleteId);
-//        $profile_photo_path = $member->profile_photo_path;
-//        $profile_picture = $member->profile_picture;
-
-//        Storage::delete($profile_photo_path);
-//        Storage::delete($profile_picture);
 
         $member->delete();
 
