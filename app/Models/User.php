@@ -32,7 +32,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'email',
         'password',
         'email_verified_at',
-        'profile_picture',
+        'image',
         'logged_in',
         'last_login_time',
         'last_login_ip',

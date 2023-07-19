@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use Illuminate\Validation\Rule;
 
 class MembersController extends Controller
 {
@@ -62,7 +63,7 @@ class MembersController extends Controller
             'email' => $request['email'],
             'password' => Hash::make($request['password']),
             'email_verified_at' => now(),
-            'profile_picture' => "members/$newFilename"
+            'image' => "members/$newFilename"
         ]);
 
         //generate image
@@ -98,17 +99,34 @@ class MembersController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(User $user)
+    public function edit(User $member)
     {
-        //
+        return view('admin.members.edit', [
+            'member' => $member
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, User $user)
+    public function update(Request $request, User $member)
     {
-        //
+        $this->validate($request, [
+            'image' => ['required'],
+        ]);
+
+        if (str()->afterLast($request->input('image'), '/') !== str()->afterLast($member->image, '/')) {
+            Storage::disk('public')->delete($member->image);
+            $newFilename = Str::after($request->input('image'), 'tmp/');
+            Storage::disk('public')->move($request->input('image'), "members/$newFilename");
+        }
+
+        $member->update([
+            'image' => isset($newFilename) ? "members/$newFilename" : $member->image
+        ]);
+
+        $request->session()->flash('success', 'Member successfully updated.');
+        return redirect()->route('admin.members.index');
     }
 
     /**
