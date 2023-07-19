@@ -12,7 +12,7 @@
                     </div>
                 </div>
                 <div class="pr-2">
-                    <x-link.btn-primary href="{{ route('admin.sponsors.create') }}" class="px-5 py-2.5 text-sm font-medium">New sponsor</x-link.btn-primary>
+                    <x-link.btn-primary href="{{ route('admin.members.create') }}" class="px-5 py-2.5 text-sm font-medium">New member</x-link.btn-primary>
                 </div>
             </div>
 
@@ -79,8 +79,18 @@
                                 @endif
                             </th>
                             <td class="px-6 py-4 flex justify-end space-x-4">
-                                <x-link.btn-primary href="{{ route('admin.members.edit' , $member) }}" class="px-2.5 py-2.5 text-xs font-medium"><i class="fa-solid fa-pen-to-square"></i></x-link.btn-primary>
-                                <x-button.danger type="button" wire:click="deleteId({{ $member->id }})" class="px-2.5 py-2.5 text-xs font-medium"><i class="fa-solid fa-trash-can"></i></x-button.danger>
+                                @if ($member->trashed())
+                                    @role('admin')
+                                    <x-link.primary href="{{ route('admin.members.trashed.restore' , $member->id) }}" class="px-2.5 py-2.5 text-xs font-medium">Restore</x-link.primary>
+                                    <x-link.btn-danger href="{{ route('admin.members.trashed.destroy' , $member->id) }}" class="px-2.5 py-2.5 text-xs font-medium">Force Delete</x-link.btn-danger>
+                                    @endrole
+                                    @role('member')
+                                    <span class="px-2.5 py-2.5 text-xs font-medium text-center text-white bg-red-600 rounded-lg hover:bg-red-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 transition ease-in-out duration-150">Deleted</span>
+                                    @endrole
+                                @else
+                                    <x-link.btn-primary href="{{ route('admin.members.edit' , $member) }}" class="px-2.5 py-2.5 text-xs font-medium"><i class="fa-solid fa-pen-to-square"></i></x-link.btn-primary>
+                                    <x-button.danger type="button" wire:click="deleteId({{ $member->id }})" class="px-2.5 py-2.5 text-xs font-medium"><i class="fa-solid fa-trash-can"></i></x-button.danger>
+                                @endif
                             </td>
                         </tr>
                     @endforeach

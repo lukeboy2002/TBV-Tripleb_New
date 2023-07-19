@@ -118,4 +118,34 @@ class MembersController extends Controller
     {
         //
     }
+
+    public function trashed()
+    {
+        //
+    }
+
+    public function trashedRestore(Request $request, $id)
+    {
+        $member = User::onlyTrashed()->findOrFail($id);
+        $member->restore();
+
+        $request->session()->flash('success', 'User has been restored');
+
+        return back();
+    }
+
+    public function trashedDelete(Request $request, $id)
+    {
+        $member = User::onlyTrashed()->findOrFail($id);
+        $profile_photo_path = $member->profile_photo_path;
+        $profile_picture = $member->profile_picture;
+
+        Storage::delete($profile_photo_path);
+        Storage::delete($profile_picture);
+
+        $member->forceDelete();
+        $request->session()->flash('success', 'User has been completed deleted');
+
+        return back();
+    }
 }
