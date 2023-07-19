@@ -47,8 +47,12 @@ Route::prefix('admin')->name('admin.')->middleware(['auth:sanctum', config('jets
     Route::get('members/trashed', [\App\Http\Controllers\Admin\MembersController::class, 'trashed'])->name('members.trashed');
     Route::get('members/trashed/{id}/restore', [\App\Http\Controllers\Admin\MembersController::class, 'trashedRestore'])->name('members.trashed.restore');
     Route::get('members/trashed/{id}/forse_delete', [\App\Http\Controllers\Admin\MembersController::class, 'trashedDelete'])->name('members.trashed.destroy');
-
     Route::resource('members', \App\Http\Controllers\Admin\MembersController::class);
+
+    Route::get('users/trashed', [\App\Http\Controllers\Admin\UserController::class, 'trashed'])->name('user.trashed');
+    Route::get('users/trashed/{id}/restore', [\App\Http\Controllers\Admin\UserController::class, 'trashedRestore'])->name('user.trashed.restore');
+    Route::get('users/trashed/{id}/forse_delete', [\App\Http\Controllers\Admin\UserController::class, 'trashedDelete'])->name('user.trashed.destroy');
+    Route::resource('users', \App\Http\Controllers\Admin\UserController::class);
 
     //PERMISSIONS
     Route::post('/permissions/{permission}/roles', [\App\Http\Controllers\Admin\PermissionController::class, 'assignRole'])->name('permissions.roles');

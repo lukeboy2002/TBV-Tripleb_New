@@ -35,10 +35,13 @@
                     <div class="pl-11">All Members</div>
                 </x-link.btn-menu>
                 <li>
-                    <x-link.btn-menu href="{{ route('admin.members.create') }}" :active="request()->routeIs('admin.members.create*')">
+                    <x-link.btn-menu href="{{ route('admin.members.create') }}" :active="request()->routeIs('admin.members.create')">
                         <div class="pl-11">Create Member</div>
                     </x-link.btn-menu>
                 </li>
+                <x-link.btn-menu href="{{ route('admin.users.index') }}" :active="request()->routeIs('admin.users.index')">
+                    <div class="pl-11">All Users</div>
+                </x-link.btn-menu>
                 <li>
                     <x-link.btn-menu href="#" :active="request()->routeIs('admin.invoice*')">
                         <div class="pl-11">Invite User</div>

@@ -147,7 +147,7 @@ class MembersController extends Controller
         $member = User::onlyTrashed()->findOrFail($id);
         $member->restore();
 
-        $request->session()->flash('success', 'User has been restored');
+        $request->session()->flash('success', 'Member has been restored');
 
         return back();
     }
@@ -156,13 +156,13 @@ class MembersController extends Controller
     {
         $member = User::onlyTrashed()->findOrFail($id);
         $profile_photo_path = $member->profile_photo_path;
-        $profile_picture = $member->profile_picture;
+        $image = $member->image;
 
         Storage::delete($profile_photo_path);
-        Storage::delete($profile_picture);
+        Storage::delete($image);
 
         $member->forceDelete();
-        $request->session()->flash('success', 'User has been completed deleted');
+        $request->session()->flash('success', 'Member has been completed deleted');
 
         return back();
     }
