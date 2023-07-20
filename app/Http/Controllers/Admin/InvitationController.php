@@ -12,6 +12,7 @@ class InvitationController extends Controller
      */
     public function create()
     {
+
         return view('admin.invitations.create');
     }
 
@@ -20,6 +21,6 @@ class InvitationController extends Controller
      */
     public function store(Request $request)
     {
-
+        dd($request);
     }
 }
