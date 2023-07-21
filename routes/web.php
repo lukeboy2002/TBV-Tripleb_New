@@ -17,6 +17,10 @@ Route::get('/', function () {
     return view('welcome');
 })->name('home');
 
+//CREATE USER AFTER INVITATION
+Route::get('user/create', [\App\Http\Controllers\ProfileController::class, 'create'] )->name('user.create')->middleware('HasInvitation');
+Route::post('user/store', [\App\Http\Controllers\ProfileController::class, 'store'])->name('user.store');
+
 Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified'])->group(function () {
     Route::get('/dashboard', function () {
         return view('dashboard');

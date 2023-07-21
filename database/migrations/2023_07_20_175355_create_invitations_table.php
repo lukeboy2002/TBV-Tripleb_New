@@ -15,8 +15,10 @@ return new class extends Migration
             $table->id();
             $table->string('email')->unique();
             $table->string('invited_by')->nullable();
+            $table->dateTime('invited_date')->nullable();
             $table->string('invitation_token', 32)->unique()->nullable();
             $table->timestamp('registered_at')->nullable();
+            $table->boolean('active')->nullable()->default(true);
             $table->timestamps();
         });
     }

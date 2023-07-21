@@ -39,7 +39,7 @@ class All extends Component
     public function render()
     {
         return view('livewire.admin.invitations.all', [
-            'invitations' => Invitation::orderby('created_at')
+            'invitations' => Invitation::orderby('active')
                 ->where(function ($query) {
                     $query->where('email', 'like', '%' . $this->search . '%')
                         ->orWhere('invited_by', 'like', '%' . $this->search . '%');
@@ -47,7 +47,6 @@ class All extends Component
                 ->when($this->sortField, function ($query) {
                     $query->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc');
                 })
-                ->latest()
                 ->paginate(10),
         ]);
     }
@@ -60,7 +59,7 @@ class All extends Component
 
     public function delete()
     {
-        $invitation = User::find($this->deleteId);
+        $invitation = Invitation::find($this->deleteId);
 
         $invitation->delete();
 

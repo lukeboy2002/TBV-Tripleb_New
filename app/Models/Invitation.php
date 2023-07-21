@@ -11,9 +11,16 @@ class Invitation extends Model
 
     protected $fillable = [
         'email',
+        'title',
+        'link',
         'invited_by',
+        'invited_date',
         'invitation_token',
         'registered_at',
+    ];
+
+    protected $casts = [
+        'invited_date' => 'datetime',
     ];
 
     /**
@@ -32,5 +39,10 @@ class Invitation extends Model
     public function getLink()
     {
         return urldecode(route('user.create').'?invitation_token='.$this->invitation_token);
+    }
+
+    public function getInvitationDate()
+    {
+        return $this->invited_date->format('d F Y');
     }
 }

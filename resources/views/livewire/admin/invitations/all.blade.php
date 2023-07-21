@@ -37,6 +37,9 @@
                                 />
                             </div>
                         </th>
+                        <th scope="col" class="px-6 py-3">
+                            Invited At
+                        </th>
                         <th scope="col" class="px-6 py-3 flex justify-end space-x-4">
                             Actions
                         </th>
@@ -47,6 +50,12 @@
                         <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                             <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                 {{ $invitation->email }}
+                            </th>
+                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                {{ ucfirst( $invitation->invited_by ) }}
+                            </th>
+                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                {{ $invitation->getInvitationDate() }}
                             </th>
                             <td class="px-6 py-4 flex justify-end space-x-4">
                                 <x-button.danger type="button" wire:click="deleteId({{ $invitation->id }})" class="px-2.5 py-2.5 text-xs font-medium"><i class="fa-solid fa-trash-can"></i></x-button.danger>

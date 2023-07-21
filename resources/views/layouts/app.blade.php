@@ -23,7 +23,7 @@
 <body class="antialiased relative bg-white dark:bg-gray-800 max-w-full">
     <div class="min-h-screen flex flex-col">
         <div class="z-50">
-{{--            <x-popups.messages />--}}
+            <x-messages />
 {{--            <x-popups.banner />--}}
         </div>
 
