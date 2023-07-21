@@ -4,7 +4,8 @@
             <!-- Profile dropdown -->
             <div class="ml-3 text-gray-900 dark:text-white text-base font-bold md:block hidden">
                 <span class="sr-only">Open user menu for </span>
-                {{ current_user()->username }}
+                {{ ucfirst( current_user()->username ) }}
+
             </div>
             <x-dropdown.user />
         @else

@@ -47,7 +47,7 @@
                     <div class="pl-11">All Users</div>
                 </x-link.btn-menu>
                 <li>
-                    <x-link.btn-menu href="#" :active="request()->routeIs('admin.invoice*')">
+                    <x-link.btn-menu href="{{ route('admin.invitations.create') }}" :active="request()->routeIs('admin.invitations*')">
                         <div class="pl-11">Invite User</div>
                     </x-link.btn-menu>
                 </li>
