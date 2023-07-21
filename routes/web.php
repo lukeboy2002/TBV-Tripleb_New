@@ -45,20 +45,20 @@ Route::prefix('admin')->name('admin.')->middleware(['auth:web', config('jetstrea
     Route::get('slides/{slide}/edit', [\App\Http\Controllers\Admin\SlideController::class, 'edit'])->name('slides.edit');
 
     Route::resource('sponsors', \App\Http\Controllers\Admin\SponsorController::class);
-    Route::resource('members', \App\Http\Controllers\Admin\MembersController::class);
+    Route::resource('members', \App\Http\Controllers\Admin\MemberController::class);
     Route::resource('users', \App\Http\Controllers\Admin\UserController::class);
 
 });
 
 //ONLY ADMIN
 Route::prefix('admin')->name('admin.')->middleware(['auth:web', config('jetstream.auth_session'), 'verified', 'role:admin'])->group(function () {
-    Route::get('members/trashed', [\App\Http\Controllers\Admin\MembersController::class, 'trashed'])->name('members.trashed');
-    Route::get('members/trashed/{id}/restore', [\App\Http\Controllers\Admin\MembersController::class, 'trashedRestore'])->name('members.trashed.restore');
-    Route::get('members/trashed/{id}/forse_delete', [\App\Http\Controllers\Admin\MembersController::class, 'trashedDelete'])->name('members.trashed.destroy');
-    Route::post('/members/{member}/roles', [\App\Http\Controllers\Admin\MembersController::class, 'assignRole'])->name('members.roles');
-    Route::delete('/members/{member}/roles/{role}', [\App\Http\Controllers\Admin\MembersController::class, 'removeRole'])->name('members.roles.revoke');
-    Route::post('/members/{member}/permissions', [\App\Http\Controllers\Admin\MembersController::class, 'givePermission'])->name('members.permissions');
-    Route::delete('/members/{member}/permissions/{permission}', [\App\Http\Controllers\Admin\MembersController::class, 'revokePermission'])->name('members.permissions.revoke');
+    Route::get('members/trashed', [\App\Http\Controllers\Admin\MemberController::class, 'trashed'])->name('members.trashed');
+    Route::get('members/trashed/{id}/restore', [\App\Http\Controllers\Admin\MemberController::class, 'trashedRestore'])->name('members.trashed.restore');
+    Route::get('members/trashed/{id}/forse_delete', [\App\Http\Controllers\Admin\MemberController::class, 'trashedDelete'])->name('members.trashed.destroy');
+    Route::post('/members/{member}/roles', [\App\Http\Controllers\Admin\MemberController::class, 'assignRole'])->name('members.roles');
+    Route::delete('/members/{member}/roles/{role}', [\App\Http\Controllers\Admin\MemberController::class, 'removeRole'])->name('members.roles.revoke');
+    Route::post('/members/{member}/permissions', [\App\Http\Controllers\Admin\MemberController::class, 'givePermission'])->name('members.permissions');
+    Route::delete('/members/{member}/permissions/{permission}', [\App\Http\Controllers\Admin\MemberController::class, 'revokePermission'])->name('members.permissions.revoke');
 
     Route::get('users/trashed', [\App\Http\Controllers\Admin\UserController::class, 'trashed'])->name('users.trashed');
     Route::get('users/trashed/{id}/restore', [\App\Http\Controllers\Admin\UserController::class, 'trashedRestore'])->name('users.trashed.restore');

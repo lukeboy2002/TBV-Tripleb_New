@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
 
-class MembersController extends Controller
+class MemberController extends Controller
 {
     use PasswordValidationRules;
     /**
