@@ -65,8 +65,8 @@
                     <div class="pl-11">Categories</div>
                 </x-link.btn-menu>
                 <li>
-                    <x-link.btn-menu href="#" :active="request()->routeIs('admin.billing*')">
-                        <div class="pl-11">Billing</div>
+                    <x-link.btn-menu href="{{ route('admin.posts.index') }}" :active="request()->routeIs('admin.posts*')">
+                        <div class="pl-11">Posts</div>
                     </x-link.btn-menu>
                 </li>
                 <li>

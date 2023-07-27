@@ -47,7 +47,10 @@ Route::prefix('admin')->name('admin.')->middleware(['auth:web', config('jetstrea
     Route::resource('sponsors', \App\Http\Controllers\Admin\SponsorController::class);
     Route::resource('members', \App\Http\Controllers\Admin\MemberController::class);
     Route::resource('users', \App\Http\Controllers\Admin\UserController::class);
-    Route::resource('categories', \App\Http\Controllers\Admin\CategoryController::class);
+    Route::resource('categories', \App\Http\Controllers\Admin\CategoryController::class)->except('show', 'destroy');
+    Route::post('upload', [\App\Http\Controllers\admin\PostController::class, 'upload'])->name('upload');
+    Route::resource('posts', \App\Http\Controllers\Admin\PostController::class);
+
 });
 
 //ONLY ADMIN
