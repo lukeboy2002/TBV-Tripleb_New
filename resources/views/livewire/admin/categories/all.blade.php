@@ -76,7 +76,7 @@
                         <i class="fa-solid fa-trash-can"></i>
                     </div>
                     <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
-                        <h3 class="text-lg leading-6 font-medium text-gray-900 dark:text-white" id="modal-title">Delete Permission</h3>
+                        <h3 class="text-lg leading-6 font-medium text-gray-900 dark:text-white" id="modal-title">Delete Categorie</h3>
                         <div class="mt-2">
                             <p class="text-sm text-gray-500 dark:text-gray-200 mb-3">
                                 Make sure you want to do this.

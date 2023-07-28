@@ -5,7 +5,7 @@
     </x-slot>
 
     <x-card.default>
-        <form action="{{ route('admin.categories.update', $category->id) }}" method="POST" enctype="multipart/form-data" class="space-y-6">
+        <form action="{{ route('admin.categories.update', $category) }}" method="POST" enctype="multipart/form-data" class="space-y-6">
             @method('PATCH')
             @csrf
             <div>

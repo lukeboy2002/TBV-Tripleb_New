@@ -10,7 +10,7 @@
     </x-slot>
 
     <x-card.default>
-        <form action="{{ route('admin.posts.update', $post->id) }}" method="POST" enctype="multipart/form-data" class="space-y-6">
+        <form action="{{ route('admin.posts.update', $post) }}" method="POST" enctype="multipart/form-data" class="space-y-6">
             @method('PATCH')
             @csrf
 
