@@ -163,7 +163,7 @@
                 },
                 files: [
                     {
-                        source: '{{ Storage::disk('public')->url($member->image) }}',
+                        source: '{{ Storage::disk('public')->url($member->player->image) }}',
                         options: {
                             type: 'local',
                         },

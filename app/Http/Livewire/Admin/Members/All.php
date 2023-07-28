@@ -40,7 +40,7 @@ class All extends Component
     {
         return view('livewire.admin.members.all', [
             'members' => User::role('member')
-                ->orderby('logged_in', 'desc')
+                ->orderby('logged_in', 'asc')
                 ->where(function ($query) {
                     $query->where('username', 'like', '%' . $this->search . '%')
                         ->orWhere('email', 'like', '%' . $this->search . '%');
@@ -48,10 +48,10 @@ class All extends Component
                 ->when($this->sortField, function ($query) {
                     $query->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc');
                 })
-                ->with('roles')
+                ->with('roles', 'player')
                 ->withTrashed()
                 ->latest()
-                ->paginate(10),
+                ->paginate(14),
         ]);
     }
 
