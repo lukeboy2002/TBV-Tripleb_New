@@ -93,12 +93,11 @@ class SponsorController extends Controller
             'name' => $request['name'],
             'link' => $request['link'],
             'active' => $request['active'],
-            'image' => isset($newFilename) ? "sponsors/$newFilename" : $sponsor->image
+            'image' => isset($newFilename) ? "sponsors/$newFilename" : $sponsor->image,
         ]);
 
         $request->session()->flash('success', 'Sponsor successfully updated.');
         return redirect()->route('admin.sponsors.index');
-
     }
 
     /**

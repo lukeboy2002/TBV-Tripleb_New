@@ -47,7 +47,7 @@
                                 <img src="{{ $post->getImage() }}" alt="{{ $post->title }}" class="h-10 w-auto" >
                             </th>
                             <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                <a href="{{ route('admin.posts.edit' , $post->slug) }}">{{ $post->title }}</a>
+                                <a href="{{ route('admin.posts.edit', $post->id) }}">{{ $post->title }}</a>
                             </th>
                             <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                 @if( $post->active =='1' )
@@ -57,7 +57,7 @@
                                 @endif
                             </th>
                             <td class="px-6 py-4 flex justify-end space-x-4">
-                                <x-link.btn-primary href="{{ route('admin.posts.edit' , $posts) }}" class="px-2.5 py-2.5 text-xs font-medium"><i class="fa-solid fa-pen-to-square"></i></x-link.btn-primary>
+                                <x-link.btn-primary href="{{ route('admin.posts.edit' , $post->id) }}" class="px-2.5 py-2.5 text-xs font-medium"><i class="fa-solid fa-pen-to-square"></i></x-link.btn-primary>
                                 <x-button.danger type="button" wire:click="deleteId({{ $post->id }})" class="px-2.5 py-2.5 text-xs font-medium"><i class="fa-solid fa-trash-can"></i></x-button.danger>
                             </td>
                         </tr>

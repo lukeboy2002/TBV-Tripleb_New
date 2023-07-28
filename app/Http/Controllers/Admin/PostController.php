@@ -10,6 +10,7 @@ use Cviebrock\EloquentSluggable\Services\SlugService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use Illuminate\Validation\Rule;
 use Illuminate\View\View;
 
 class PostController extends Controller
@@ -39,13 +40,12 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-//        dd($request);
         $this->validate($request, [
             'title' => ['required', 'string', 'max:255', 'unique:posts'],
             'image' => ['required'],
-            'body' => 'nullable|min:10',
-            'active' => 'nullable',
-            'published_at' => 'nullable',
+            'body' => ['nullable', 'min:10'],
+            'active' => ['nullable'],
+            'published_at' => ['nullable'],
         ]);
 
         $newFilename = Str::after($request->input('image'), 'tmp/');
@@ -82,7 +82,12 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        //
+        $categories = Category::all();
+
+        return view('admin.posts.edit', [
+            'post' => $post,
+            'categories' => $categories,
+        ]);
     }
 
     /**
@@ -90,7 +95,35 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        //
+        $this->validate($request, [
+            'title' => ['required', 'string', 'max:255', Rule::unique('posts')->ignore($post)],
+            'image' => ['required'],
+            'body' => ['nullable', 'min:10'],
+            'active' => ['nullable'],
+            'published_at' => ['nullable'],
+        ]);
+
+        if (str()->afterLast($request->input('image'), '/') !== str()->afterLast($post->image, '/')) {
+            Storage::disk('public')->delete($post->image);
+            $newFilename = Str::after($request->input('image'), 'tmp/');
+            Storage::disk('public')->move($request->input('image'), "posts/$newFilename");
+        }
+
+        $slug = SlugService::createSlug(Post::class, 'slug', $request->title);
+
+        $post->update([
+            'title' => $request['title'],
+            'slug' => $slug,
+            'image' => isset($newFilename) ? "posts/$newFilename" : $post->image,
+            'body' => $request['body'],
+            'active' => $request['active'],
+            'published_at' => $request['published_at'],
+        ]);
+
+        $post->categories()->sync($request->categories);
+
+        $request->session()->flash('success', 'Post successfully updated.');
+        return redirect()->route('admin.posts.index');
     }
 
     /**
