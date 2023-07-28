@@ -16,9 +16,9 @@ class DatabaseSeeder extends Seeder
         $this->call(AdminSeeder::class);
         $this->call(SponsorSeeder::class);
         $this->call(SlideSeeder::class);
-        $this->call(UserSeeder::class);
+//        $this->call(UserSeeder::class);
         $this->call(CategorySeeder::class);
-         \App\Models\Post::factory(10)->create();
+//         \App\Models\Post::factory(10)->create();
 
 
 

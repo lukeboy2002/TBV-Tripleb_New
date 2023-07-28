@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Admin\Posts;
 
 use App\Models\Post;
+use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -59,6 +60,9 @@ class All extends Component
     public function delete()
     {
         $post = Post::find($this->deleteId);
+        $image = $post->image;
+
+        Storage::delete($image);
         $post->delete();
 
         $this->showModal = false;
