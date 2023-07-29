@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Actions\Fortify\PasswordValidationRules;
 use App\Http\Controllers\Controller;
 use App\Models\Permission;
+use App\Models\Player;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -64,7 +65,7 @@ class MemberController extends Controller
             'email' => $request['email'],
             'password' => Hash::make($request['password']),
             'email_verified_at' => now(),
-            'image' => "members/$newFilename"
+//            'image' => "members/$newFilename"
         ]);
 
         //generate image
@@ -77,9 +78,11 @@ class MemberController extends Controller
         $user->profile_photo_path = $imagePath;
         $user->save();
 
-//        Member::create([
-//            'user_id' => $user->id,
-//        ]);
+        Player::create([
+            'user_id' => $user->id,
+            'username' => $request['username'],
+            'image' => "members/$newFilename"
+        ]);
 
         $role = Role::select('id')->where('name', 'member')->first();
 
@@ -122,12 +125,12 @@ class MemberController extends Controller
         ]);
 
         if (str()->afterLast($request->input('image'), '/') !== str()->afterLast($member->image, '/')) {
-            Storage::disk('public')->delete($member->image);
+            Storage::disk('public')->delete($member->player->image);
             $newFilename = Str::after($request->input('image'), 'tmp/');
             Storage::disk('public')->move($request->input('image'), "members/$newFilename");
         }
 
-        $member->update([
+        $member->player->update([
             'image' => isset($newFilename) ? "members/$newFilename" : $member->image
         ]);
 

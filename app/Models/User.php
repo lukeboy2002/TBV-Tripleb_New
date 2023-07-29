@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -73,5 +75,10 @@ class User extends Authenticatable implements MustVerifyEmail
     public function getLastLoginTime()
     {
         return $this->last_login_time->format('d F Y - H:m:s');
+    }
+
+    public function player(): HasOne
+    {
+        return $this->hasOne(Player::class);
     }
 }

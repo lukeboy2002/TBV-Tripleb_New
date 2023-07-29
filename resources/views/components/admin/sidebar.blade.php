@@ -76,6 +76,9 @@
                 </li>
             </ul>
 {{--            DROPDOWN MENU BLOG--}}
+            <x-link.btn-menu href="{{ route('admin.games.index') }}" :active="request()->routeIs('admin.slides*')">
+                <i class="fa-solid fa-trophy mr-2"></i>Games
+            </x-link.btn-menu>
 
             <div class="block md:hidden">
                 <x-main-layout.hr />
