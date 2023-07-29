@@ -3,7 +3,6 @@
 namespace App\Http\Livewire\Admin\Members;
 
 use App\Models\User;
-use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 use Livewire\WithPagination;
 
