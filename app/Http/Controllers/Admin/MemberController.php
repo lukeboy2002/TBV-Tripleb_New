@@ -80,6 +80,7 @@ class MemberController extends Controller
 
         Player::create([
             'user_id' => $user->id,
+            'username' => $request['username'],
             'image' => "members/$newFilename"
         ]);
 

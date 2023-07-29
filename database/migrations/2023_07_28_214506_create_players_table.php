@@ -14,12 +14,14 @@ return new class extends Migration
         Schema::create('players', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
+            $table->string('username')->unique();
             $table->string('image', 2048)->nullable();
             $table->text('bio')->nullable();
             $table->string('city')->nullable();
             $table->timestamp('birthday')->nullable();
-            $table->string('points')->nullable();
-            $table->string('played_games')->nullable();
+            $table->boolean('active')->nullable()->default(true);
+            $table->integer('points')->nullable();
+            $table->integer('played_games')->nullable();
             $table->timestamps();
         });
     }

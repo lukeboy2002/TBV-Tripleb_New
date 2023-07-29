@@ -11,13 +11,18 @@ class Player extends Model
     use HasFactory;
 
     protected $fillable = [
+        'id',
         'user_id',
+        'username',
         'image',
         'bio',
         'city',
         'birthday',
+        'active',
         'points',
         'played_games',
+        'created_at',
+        'updated_at',
     ];
 
     public function user(): BelongsTo

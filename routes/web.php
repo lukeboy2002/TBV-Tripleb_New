@@ -48,6 +48,7 @@ Route::prefix('admin')->name('admin.')->middleware(['auth:web', config('jetstrea
     Route::resource('members', \App\Http\Controllers\Admin\MemberController::class);
     Route::resource('users', \App\Http\Controllers\Admin\UserController::class);
     Route::resource('categories', \App\Http\Controllers\Admin\CategoryController::class)->except('show', 'destroy');
+    Route::resource('games', \App\Http\Controllers\Admin\GameController::class);
     Route::post('upload', [\App\Http\Controllers\admin\PostController::class, 'upload'])->name('upload');
 
     route::post('posts/{post}/categories', [\App\Http\Controllers\Admin\PostController::class, 'addCategory'])->name('posts.categories');
