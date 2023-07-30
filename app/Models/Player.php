@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -21,6 +22,7 @@ class Player extends Model
         'active',
         'points',
         'played_games',
+        'won_games',
         'created_at',
         'updated_at',
     ];
@@ -28,5 +30,10 @@ class Player extends Model
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function age()
+    {
+        return Carbon::parse($this->attributes['birthday'])->age;
     }
 }

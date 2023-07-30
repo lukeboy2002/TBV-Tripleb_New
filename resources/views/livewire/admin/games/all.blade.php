@@ -39,6 +39,16 @@
                             />
                         </div>
                     </th>
+                    <th scope="col" class="px-6 py-3">
+                        <div class="flex items-center">
+                            <button wire:click="sortBy('won_games')" class="uppercase">Games won</button>
+                            <x-icons.sort-icon
+                                field="won_games"
+                                :sortField="$sortField"
+                                :sortAsc="$sortAsc"
+                            />
+                        </div>
+                    </th>
                     <th scope="col" class="px-6 py-3 flex justify-end space-x-4">Actions</th>
                 </tr>
                 </thead>
@@ -84,6 +94,24 @@
                             @else
                                 <div class="cursor-pointer" wire:click="editPlayerField({{ $index }}, 'played_games')">
                                     {{ $player['played_games'] }}
+                                </div>
+                            @endif
+                        </th>
+                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            @if ($editedPlayerIndex === $index || $editedPlayerField === $index . '.won_games')
+                                <x-form.input type="text"
+                                              @click.away="$wire.editedPlayerField === '{{ $index }}.won_games' ? $wire.savePlayer({{ $index }}) : null"
+                                              wire:model.defer="players.{{ $index }}.won_games"
+                                              class="{{ $errors->has('players.' . $index . '.won_games') ? 'border-red-500' : 'border-gray-400' }}"
+                                />
+                                @if ($errors->has('players.' . $index . '.won_games'))
+                                    <div class="text-sm text-red-500">
+                                        {{ $errors->first('players.' . $index . '.won_games') }}
+                                    </div>
+                                @endif
+                            @else
+                                <div class="cursor-pointer" wire:click="editPlayerField({{ $index }}, 'played_games')">
+                                    {{ $player['won_games'] }}
                                 </div>
                             @endif
                         </th>
