@@ -13,12 +13,7 @@ class PlayerController extends Controller
      */
     public function index(): View
     {
-        $players = Player::where('active', 1)
-            ->simplePaginate(1);
-
-        return view('player.index' ,[
-            'players'=>$players
-        ]);
+        return view('player.index');
     }
 
     /**
