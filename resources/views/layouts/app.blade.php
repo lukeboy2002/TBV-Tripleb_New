@@ -34,7 +34,7 @@
             </nav>
         </section>
 
-        <main class="lg:flex-grow">
+        <main class="lg:flex-grow px-2 sm:px-0">
             <div class="md:grid md:grid-cols-12">
                 <div class="md:col-span-12">
                     {{ $slot }}

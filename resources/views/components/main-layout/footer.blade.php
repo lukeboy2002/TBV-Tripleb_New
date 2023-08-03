@@ -1,5 +1,5 @@
 <div class="bg-white dark:bg-gray-800 w-full">
-    <div class="md:max-w-7x mx-auto md:flex justify-around items-center py-8 px-5 md:px-0">
+    <div class="max-w-6xl mx-auto py-8 px-4">
         <x-sponsors />
     </div>
 
@@ -35,7 +35,7 @@
     </div>
     <!-- MENU -->
 {{--    <div class="bg-gray-200 dark:bg-gray-900">--}}
-        <div class="md:max-w-7x mx-auto md:flex justify-around items-center py-5 px-5 md:px-0">
+        <div class="max-w-6xl mx-auto md:flex justify-around items-center py-5 px-5 md:px-0">
             <div class="flex justify-center md:justify-around space-x-1 md:space-x-6">
                 <x-menu.footer />
             </div>

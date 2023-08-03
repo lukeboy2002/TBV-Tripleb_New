@@ -49,7 +49,7 @@ class All extends Component
                 })
                 ->with('roles', 'player')
                 ->withTrashed()
-                ->paginate(14),
+                ->paginate(10),
         ]);
     }
 

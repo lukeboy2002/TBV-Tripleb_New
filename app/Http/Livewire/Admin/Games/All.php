@@ -9,6 +9,7 @@ class All extends Component
 {
     public $editedPlayerIndex = null;
     public $editedPlayerField = null;
+
     public $players = [];
 
     public $sortField;
@@ -20,11 +21,13 @@ class All extends Component
     protected $validationAttributes = [
         'players.*.points' => 'points',
         'players.*.played_games' => 'played_games',
+        'players.*.won_games' => 'played_games',
     ];
 
     protected $rules = [
         'players.*.points' => ['required', 'numeric'],
         'players.*.played_games' => ['required', 'numeric'],
+        'players.*.won_games' => ['required', 'numeric'],
     ];
 
     public function sortBy($field)
@@ -52,15 +55,11 @@ class All extends Component
 
     public function render()
     {
-        $players = Player::query()
-            ->orderby('played_games', 'desc')
-            ->when($this->sortField, function ($query) {
+        return view('livewire.admin.games.all', [
+            $this->players = Player::when($this->sortField, function ($query) {
                 $query->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc');
-            })
-            ->get()
-            ->toArray();
-
-        return view('livewire.admin.games.all', compact('players'));
+            })->get()->toArray()
+        ]);
     }
 
     public function editPlayer($playerIndex)
