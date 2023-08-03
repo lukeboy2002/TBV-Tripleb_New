@@ -21,7 +21,7 @@
 </head>
 
 <body class="antialiased relative bg-gray-100 dark:bg-neutral-900 max-w-full">
-<div class="min-h-screen flex flex-col">
+<div class="min-h-screen flex flex-col" >
     <div class="z-50">
         {{--            <x-popups.messages />--}}
         {{--            <x-popups.banner />--}}

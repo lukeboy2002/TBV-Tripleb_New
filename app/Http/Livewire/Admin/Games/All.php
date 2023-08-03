@@ -46,21 +46,21 @@ class All extends Component
         $this->players = Player::all()->toArray();
     }
 
-    public function render()
-    {
-        return view('livewire.admin.games.all', [
-            'players' => $this->players
-        ]);
-    }
-
 //    public function render()
 //    {
 //        return view('livewire.admin.games.all', [
-//            $this->players = Player::when($this->sortField, function ($query) {
-//                $query->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc');
-//            })->get()
+//            'players' => $this->players
 //        ]);
 //    }
+
+    public function render()
+    {
+        return view('livewire.admin.games.all', [
+            $this->players = Player::when($this->sortField, function ($query) {
+                $query->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc');
+            })->get()->toArray()
+        ]);
+    }
 
     public function editPlayer($playerIndex)
     {
