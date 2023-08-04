@@ -10,7 +10,7 @@
             <x-link.btn-menu href="{{ route('admin.settings') }}" :active="request()->routeIs('admin.settings')">
                 <i class="fa-solid fa-gauge mr-2"></i>Dashboard
             </x-link.btn-menu>
-            <x-main-layout.hr />
+            <x-main-layout.hr class="pb-4"/>
             @if(current_user()->hasRole('admin'))
             <x-link.btn-menu href="{{ route('admin.permissions.index') }}" :active="request()->routeIs('admin.permissions*')">
                 <i class="fa-solid fa-list mr-2"></i>Permissions
