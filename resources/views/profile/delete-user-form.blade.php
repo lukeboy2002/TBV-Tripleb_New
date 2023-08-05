@@ -41,10 +41,9 @@
 
             <x-slot name="footer">
                 <x-button.secondary class="px-3 py-2 text-xs font-medium" wire:click="$toggle('confirmingUserDeletion')" wire:loading.attr="disabled">
-                    {{ __('Cancel') }}
+                    Cancel
                 </x-button.secondary>
-
-                <x-button.danger class="px-3 py-2 text-xs font-medium ml-2" wire:click="deleteUser" wire:loading.attr="disabled">
+                <x-button.danger class="px-3 py-2 text-xs font-medium" wire:click="deleteUser" wire:loading.attr="disabled">
                     Delete Account
                 </x-button.danger>
             </x-slot>

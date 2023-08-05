@@ -7,6 +7,12 @@
                 <x-main-layout.hr class="py-8"/>
             @endif
 
+            @role('member')
+                <livewire:profile.update-player-information-form :user="$user" />
+
+                <x-main-layout.hr class="py-8"/>
+            @endrole
+
             @if (Laravel\Fortify\Features::enabled(Laravel\Fortify\Features::updatePasswords()))
                 <div class="mt-10 sm:mt-0">
                     @livewire('profile.update-password-form')

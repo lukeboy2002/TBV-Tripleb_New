@@ -235,3 +235,18 @@
     </div>
 @endif
 <!-- End status session -->
+
+
+@if (session()->has('success_small'))
+    <div x-data="{ show: true }"
+         x-init="setTimeout(() => show = false, 4000)"
+         x-show="show"
+    >
+        <div class="flex text-sm text-green-500 font-semibold">
+            <x-icons.icon name="check" class="mr-1"/>
+            <h3>
+                Saved
+            </h3>
+        </div>
+    </div>
+@endif

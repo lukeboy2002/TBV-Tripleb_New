@@ -86,19 +86,19 @@
             @else
                 @if ($showingRecoveryCodes)
                     <x-section.confirms-password wire:then="regenerateRecoveryCodes">
-                        <x-button.secondary class="px-3 py-2 text-xs font-medium mr-2">
+                        <x-button.secondary class="px-3 py-2 text-xs font-medium">
                             Regenerate Recovery Codes
                         </x-button.secondary>
                     </x-section.confirms-password>
                 @elseif ($showingConfirmation)
                     <x-section.confirms-password wire:then="confirmTwoFactorAuthentication">
-                        <x-button.primary type="button" class="px-3 py-2 text-xs font-medium mr-2" wire:loading.attr="disabled">
+                        <x-button.primary type="button" class="px-3 py-2 text-xs font-medium" wire:loading.attr="disabled">
                             Confirm
                         </x-button.primary>
                     </x-section.confirms-password>
                 @else
                     <x-section.confirms-password wire:then="showRecoveryCodes">
-                        <x-button.secondary class="px-3 py-2 text-xs font-medium mr-2">
+                        <x-button.secondary class="px-3 py-2 text-xs font-medium">
                             Show Recovery Codes
                         </x-button.secondary>
                     </x-section.confirms-password>
@@ -106,13 +106,13 @@
 
                 @if ($showingConfirmation)
                     <x-section.confirms-password wire:then="disableTwoFactorAuthentication">
-                        <x-button.secondary class="px-3 py-2 text-xs font-medium mr-2" wire:loading.attr="disabled">
+                        <x-button.secondary class="px-3 py-2 text-xs font-medium" wire:loading.attr="disabled">
                             Cancel
                         </x-button.secondary>
                     </x-section.confirms-password>
                 @else
                     <x-section.confirms-password wire:then="disableTwoFactorAuthentication">
-                        <x-button.danger class="px-3 py-2 text-xs font-medium mr-2" wire:loading.attr="disabled">
+                        <x-button.danger class="px-3 py-2 text-xs font-medium" wire:loading.attr="disabled">
                             Disable
                         </x-button.danger>
                     </x-section.confirms-password>

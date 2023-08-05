@@ -40,12 +40,12 @@
                         </div>
                     </div>
                     <div class="flex h-auto space-x-2">
-                        <x-button.secondary class="mt-2 mr-2 px-3 py-2 text-xs font-medium" type="button" x-on:click.prevent="$refs.photo.click()">
+                        <x-button.secondary class="px-3 py-2 text-xs font-medium" type="button" x-on:click.prevent="$refs.photo.click()">
                             Select A New Photo
                         </x-button.secondary>
 
                         @if ($this->user->profile_photo_path)
-                            <x-button.secondary type="button" class="mt-2 px-3 py-2 text-xs font-medium" wire:click="deleteProfilePhoto">
+                            <x-button.secondary type="button" class="px-3 py-2 text-xs font-medium" wire:click="deleteProfilePhoto">
                                 Remove Photo
                             </x-button.secondary>
                         @endif
@@ -91,7 +91,7 @@
         <x-action-message class="mr-3 flex items-center" on="saved">
             <x-icons.icon name="check" class="mr-1"/>Saved</x-action-message>
 
-        <x-button.primary class="mt-2 mr-2 px-3 py-2 text-xs font-medium" wire:loading.attr="disabled" wire:target="photo">
+        <x-button.primary class="px-3 py-2 text-xs font-medium" wire:loading.attr="disabled" wire:target="photo">
             Save
         </x-button.primary>
     </x-slot>
