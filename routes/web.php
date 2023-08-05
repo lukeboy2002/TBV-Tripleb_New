@@ -78,7 +78,9 @@ Route::prefix('admin')->name('admin.')->middleware(['auth:web', config('jetstrea
     route::post('posts/{post}/categories', [\App\Http\Controllers\Admin\PostController::class, 'addCategory'])->name('posts.categories');
     Route::delete('/posts/{post}/categories/{category}', [\App\Http\Controllers\Admin\PostController::class, 'removeCategory'])->name('posts.categories.remove');
     Route::resource('posts', \App\Http\Controllers\Admin\PostController::class);
+
     Route::post('upload', [\App\Http\Controllers\admin\PostController::class, 'upload'])->name('upload');
+    Route::post('uploadplayer', [\App\Http\Controllers\admin\PlayerController::class, 'upload'])->name('player.upload');
 
     Route::post('filepondupload', [\App\Http\Controllers\Admin\FilepondController::class, 'upload'])->name('filepond.upload');
     Route::delete('filepondrevert', [\App\Http\Controllers\Admin\FilepondController::class, 'revert'])->name('filepond.revert');

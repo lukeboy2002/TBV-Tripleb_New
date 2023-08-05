@@ -140,7 +140,7 @@ class PostController extends Controller
             $post = new Post();
             $post->id = 0;
             $post->exists = true;
-            $image = $post->addMediaFromRequest('upload')->toMediaCollection('thumb');
+            $image = $post->addMediaFromRequest('upload')->toMediaCollection('post');
 
             return response()->json([
                 'uploaded' => true,
