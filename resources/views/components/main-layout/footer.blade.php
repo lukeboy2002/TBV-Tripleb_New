@@ -12,7 +12,7 @@
     <div class="w-full mx-auto sm:max-w-7xl sm:flex sm:justify-around sm:items-start py-5 md:py-12 md:px-0">
         <!-- LOGO -->
         <div class="flex justify-center">
-            <x-Logo />
+            <x-logo />
             <div class="pt-4 block lg:text-center lg:flex lg:justify-center lg:items-center">
                 <x-link.btn-secondary class="px-3 py-2 text-xs font-medium" href="#">Volg ons</x-link.btn-secondary>
 

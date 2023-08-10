@@ -13,7 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', function () {
+    return view('welcome');
+})->name('home');
 
 //CREATE USER AFTER INVITATION
 Route::get('user/create', [\App\Http\Controllers\ProfileController::class, 'create'] )->name('user.create')->middleware('HasInvitation');

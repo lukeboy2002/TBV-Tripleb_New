@@ -1,6 +1,6 @@
 @props(['post'])
 
-<div class="p-5 border border-gray-200 shadow-md dark:border-gray-700">
+<div class="p-4 border border-gray-200 shadow-md dark:border-gray-700">
     <div class="flex items-center justify-between mb-4">
         <div class="hidden sm:flex space-x-4">
             <div class="flex text-xs text-gray-500">
@@ -12,6 +12,7 @@
             </div>
             <div class="text-xs text-gray-500">
 {{--                <i class="fa-solid fa-eye mr-2"></i>{{ $post->views->count() }}--}}
+                <i class="fa-solid fa-eye mr-2"></i>3
             </div>
             <div class="text-xs text-gray-500">
                 {{--                                <i class="fa-solid fa-comments mr-2"></i>{{ $post->comments->count() }}--}}

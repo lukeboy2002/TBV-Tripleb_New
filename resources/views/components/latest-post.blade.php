@@ -1,3 +1,3 @@
-<div>
-    <!-- It is quality rather than quantity that matters. - Lucius Annaeus Seneca -->
-</div>
+{{--@if ($latestPost)--}}
+    <x-blog.featured :post="$latestPost"/>
+{{--@endif--}}
