@@ -21,9 +21,10 @@
         </div>
         <div>
             @foreach($post->categories as $category)
-                <x-link.primary href="{{ route('post.by-category', $category ) }}" class="hidden sm:inline-flex mx-1 uppercase">
+{{--                <x-link.primary href="{{ route('post.by-category', $category ) }}" class="hidden sm:inline-flex mx-1 uppercase">--}}
+                <x-link.category href="#" class="hidden sm:inline-flex mx-1 uppercase">
                     #{{ $category->title }}
-                </x-link.primary>
+                </x-link.category>
             @endforeach
         </div>
     </div>

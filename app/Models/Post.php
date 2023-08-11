@@ -48,6 +48,11 @@ class Post extends Model implements HasMedia
         return $this->belongsToMany(Category::class)->withTimestamps();
     }
 
+    public function views()
+    {
+        return $this->hasMany(PostView::class, 'post_id');
+    }
+
     public function getImage()
     {
         if (str_starts_with($this->image, 'http')) {

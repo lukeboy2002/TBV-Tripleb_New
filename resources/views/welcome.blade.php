@@ -11,7 +11,7 @@
         <x-slot name="side">
             <x-main-layout.heading>Hot news</x-main-layout.heading>
             <div class="py-4">
-                saflkhlkj
+                <x-popular-posts />
             </div>
         </x-slot>
     </x-blog.grid>
