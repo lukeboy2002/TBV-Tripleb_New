@@ -17,13 +17,17 @@ Route::get('/', function () {
     return view('welcome');
 })->name('home');
 
-//CREATE USER AFTER INVITATION
-Route::get('user/create', [\App\Http\Controllers\ProfileController::class, 'create'] )->name('user.create')->middleware('HasInvitation');
-Route::post('user/store', [\App\Http\Controllers\ProfileController::class, 'store'])->name('user.store');
+Route::get('posts', [\App\Http\Controllers\PostController::class, 'index'])->name('posts.index');
+Route::get('posts/{post:slug}', [\App\Http\Controllers\PostController::class, 'show'])->name('posts.show');
 
 Route::get('players', [\App\Http\Controllers\PlayerController::class, 'index'])->name('players.index');
 Route::get('players/{player}', [\App\Http\Controllers\PlayerController::class, 'show'])->name('players.show');
 
+//CREATE USER AFTER INVITATION
+Route::get('user/create', [\App\Http\Controllers\ProfileController::class, 'create'] )->name('user.create')->middleware('HasInvitation');
+Route::post('user/store', [\App\Http\Controllers\ProfileController::class, 'store'])->name('user.store');
+
+//REGISTERED USERS
 Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified'])->group(function () {
     Route::get('/dashboard', function () {
         return view('dashboard');

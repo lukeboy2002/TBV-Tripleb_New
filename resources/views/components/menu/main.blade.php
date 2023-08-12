@@ -6,7 +6,7 @@
     <i class="fa-solid fa-people-group mr-2"></i>
     Team
 </x-link.btn-menu>
-<x-link.btn-menu href="#" class="text-xs font-medium">
+<x-link.btn-menu href="{{ route('posts.index') }}" :active="request()->routeIs('players.*')">
     <i class="fa-solid fa-blog mr-2"></i>
     Blog
 </x-link.btn-menu>

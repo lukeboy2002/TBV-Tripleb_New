@@ -29,10 +29,10 @@ class Post extends Model implements HasMedia
         'published_at',
     ];
 
-    public function getRouteKeyName()
-    {
-        return 'slug';
-    }
+//    public function getRouteKeyName()
+//    {
+//        return 'slug';
+//    }
 
     protected $casts = [
         'published_at' => 'datetime'
