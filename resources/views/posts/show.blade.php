@@ -17,9 +17,7 @@
 
     <x-blog.grid>
         <x-slot name="blog">
-            <x-main-layout.heading>In the Spotlight</x-main-layout.heading>
-            <div class="py-4">
-
+            <div class="pb-4">
                 <x-card.default class="sm:p-6 md:p-8">
                     <div class="flex justify-end mb-4">
                         @foreach($post->categories as $category)
@@ -69,7 +67,7 @@
                                         <i class="fas fa-arrow-left pr-1"></i>Previous
                                     </p>
                                     <p class="pt-2 text-gray-700 dark:text-white flex items-center justify-start">
-                                        {{\Illuminate\Support\Str::words($prev->title, 5)}}
+                                        {{\Illuminate\Support\Str::words($prev->title, 6)}}
                                     </p>
                                 </x-blog.paginate>
                             </a>
@@ -82,7 +80,7 @@
                                     <p class="text-lg text-orange-500 font-bold flex items-center justify-end">
                                         Next<i class="fas fa-arrow-right pl-1"></i></p>
                                     <p class="pt-2 text-gray-700 dark:text-white flex items-center justify-end">
-                                        {{\Illuminate\Support\Str::words($next->title, 5)}}
+                                        {{\Illuminate\Support\Str::words($next->title, 6)}}
                                     </p>
                                 </x-blog.paginate>
                             </a>
