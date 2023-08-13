@@ -35,8 +35,33 @@ class PostController extends Controller
             throw new NotFoundException();
         }
 
+        $next = Post::where('active', 1)
+            ->whereDate('published_at', '<=', Carbon::now())
+            ->whereDate('published_at', '<', $post->published_at)
+            ->orderBy('published_at', 'desc')
+            ->limit(1)
+            ->first();
+
+        $prev = Post::where('active', 1)
+            ->whereDate('published_at', '<=', Carbon::now())
+            ->whereDate('published_at', '>', $post->published_at)
+            ->orderBy('published_at', 'asc')
+            ->limit(1)
+            ->first();
+
+//        $user = $request->user();
+
+        /*        PostView::create([
+                    'post_id' => $post->id,
+                    'user_id' => $user?->id,
+                    'ip_address' => $request->ip(),
+                    'user_agent' => $request->userAgent(),
+                ]);*/
+
         return view('posts.show', [
-            'post' => $post
+            'post' => $post,
+            'next' => $next,
+            'prev' => $prev,
         ]);
     }
 }

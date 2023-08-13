@@ -60,7 +60,35 @@
                         {!! $post->body !!}
                     </div>
                 </x-card.default>
-
+                <div class="w-full flex space-x-4">
+                    <div class="w-1/2">
+                        @if($prev)
+                            <a href="{{ route('posts.show', $prev) }}">
+                                <x-blog.paginate>
+                                    <p class="text-lg text-orange-500 font-bold flex items-center">
+                                        <i class="fas fa-arrow-left pr-1"></i>Previous
+                                    </p>
+                                    <p class="pt-2 text-gray-700 dark:text-white flex items-center justify-start">
+                                        {{\Illuminate\Support\Str::words($prev->title, 5)}}
+                                    </p>
+                                </x-blog.paginate>
+                            </a>
+                        @endif
+                    </div>
+                    <div class="w-1/2">
+                        @if($next)
+                            <a href="{{ route('posts.show', $next) }}">
+                                <x-blog.paginate>
+                                    <p class="text-lg text-orange-500 font-bold flex items-center justify-end">
+                                        Next<i class="fas fa-arrow-right pl-1"></i></p>
+                                    <p class="pt-2 text-gray-700 dark:text-white flex items-center justify-end">
+                                        {{\Illuminate\Support\Str::words($next->title, 5)}}
+                                    </p>
+                                </x-blog.paginate>
+                            </a>
+                        @endif
+                    </div>
+                </div>
             </div>
         </x-slot>
         <x-slot name="side">
@@ -79,6 +107,7 @@
             </div>
 
         </x-slot>
+
     </x-blog.grid>
 
 

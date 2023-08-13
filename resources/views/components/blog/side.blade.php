@@ -12,7 +12,7 @@
 
 
     <div class="sm:flex sm:justify-between sm:space-x-2 md:block lg:flex lg:justify-between lg:space-x-2">
-        <a href="#" class="w-full sm:w-1/3 lg:w-1/3">
+        <a href="{{ route('posts.show', $post->slug) }}" class="w-full sm:w-1/3 lg:w-1/3">
             <img src="{{ asset($post->getImage() )}}" alt="{{$post->title}}"/>
         </a>
         <div class="sm:hidden lg:hidden flex justify-end space-x-2 my-2 md:flex ">
@@ -24,7 +24,7 @@
             @endforeach
         </div>
         <div class="w-full sm:w-2/3 md:w-full md:pr-1">
-            <a href="#">
+            <a href="{{ route('posts.show', $post->slug) }}">
                 <h3 class="text-md font-bold tracking-tight text-gray-900 dark:text-white">{{$post->title}}</h3>
             </a>
             <div class="hidden md:hidden sm:pt-2 sm:pb-4 sm:flex sm:justify-end sm:space-x-2 lg:pt-2 lg:pb-4 lg:flex lg:justify-end lg:space-x-2 ">

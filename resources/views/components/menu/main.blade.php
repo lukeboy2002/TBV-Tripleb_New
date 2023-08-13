@@ -1,4 +1,4 @@
-<x-link.btn-menu href="#" class="text-xs font-medium" :active="request()->routeIs('home')">
+<x-link.btn-menu href="/" class="text-xs font-medium" :active="request()->routeIs('home')">
     <i class="fa-sharp fa-solid fa-house mr-2"></i>
     home
 </x-link.btn-menu>

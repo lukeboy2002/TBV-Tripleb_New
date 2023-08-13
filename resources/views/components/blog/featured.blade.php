@@ -29,15 +29,14 @@
         </div>
     </div>
     <a href="#">
-{{--    <a href="{{ route('post.show', $post->slug) }}">--}}
+    <a href="{{ route('posts.show', $post->slug) }}">
         <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">{{ $post->title }}</h5>
     </a>
     <div class="mb-3 text-sm font-normal text-gray-700 dark:text-gray-400">
         {!! $post->shortBody() !!}
     </div>
 </div>
-{{--<a href="{{ route('post.show', $post->slug) }}">--}}
-<a href="#">
+<a href="{{ route('posts.show', $post->slug) }}">
     <img class="mx-auto max-h-96 w-full object-cover" src="{{ asset($post->getImage() )}}" alt="{{ $post->title }}">
 </a>
 {{--<div class="p-5 text-sm md:flex md:justify-between md:items-center">--}}
