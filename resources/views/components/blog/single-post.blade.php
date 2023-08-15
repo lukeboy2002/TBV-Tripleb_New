@@ -13,9 +13,8 @@
     <div class="p-3">
         <div class="mb-4 flex justify-end">
             @foreach($post->categories as $category)
-{{--                <x-link.category href="{{ route('post.by-category', $category ) }}" class="hidden sm:inline-flex mx-1 uppercase">--}}
-                <x-link.category href="#" class="hidden sm:inline-flex mx-1 uppercase">
-                    #{{ $category->title }}
+                <x-link.category href="{{ route('posts.by-category', $category ) }}" class="hidden sm:inline-flex mx-1 uppercase">
+                    {{ $category->title }}
                 </x-link.category>
             @endforeach
         </div>

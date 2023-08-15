@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Post;
 use Carbon\Carbon;
-use Illuminate\Http\Request;
 use Intervention\Image\Exception\NotFoundException;
 
 class PostController extends Controller
@@ -62,6 +62,22 @@ class PostController extends Controller
             'post' => $post,
             'next' => $next,
             'prev' => $prev,
+        ]);
+    }
+
+    public function byCategory(Category $category)
+    {
+        $posts = Post::query()
+            ->join('category_post', 'posts.id', '=', 'category_post.post_id')
+            ->where('category_post.category_id', '=', $category->id)
+            ->where('active', 1)
+            ->whereDate('published_at', '<=', Carbon::now())
+            ->orderBy('published_at', 'desc')
+            ->with('user', 'categories', 'views')
+            ->paginate(6);
+
+        return view('posts.index', [
+            'posts' => $posts,
         ]);
     }
 }

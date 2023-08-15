@@ -19,11 +19,6 @@ class Category extends Model
         'active',
     ];
 
-    public function getRouteKeyName()
-    {
-        return 'slug';
-    }
-
     public function posts(): BelongsToMany
     {
         return $this->belongsToMany(Post::class);

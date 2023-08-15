@@ -19,6 +19,7 @@ Route::get('/', function () {
 
 Route::get('posts', [\App\Http\Controllers\PostController::class, 'index'])->name('posts.index');
 Route::get('posts/{post:slug}', [\App\Http\Controllers\PostController::class, 'show'])->name('posts.show');
+Route::get('category/{category:slug}', [\App\Http\Controllers\PostController::class, 'byCategory'])->name('posts.by-category');
 
 Route::get('players', [\App\Http\Controllers\PlayerController::class, 'index'])->name('players.index');
 Route::get('players/{player}', [\App\Http\Controllers\PlayerController::class, 'show'])->name('players.show');

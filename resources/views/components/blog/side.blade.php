@@ -17,9 +17,8 @@
         </a>
         <div class="sm:hidden lg:hidden flex justify-end space-x-2 my-2 md:flex ">
             @foreach($post->categories as $category)
-{{--                <x-link.category href="{{ route('post.by-category', $category ) }}" class="hidden sm:inline-flex mx-1">--}}
-                <x-link.category href="#">
-                    #{{ $category->title }}
+                <x-link.category href="{{ route('posts.by-category', $category ) }}" class="hidden sm:inline-flex mx-1">
+                    {{ $category->slug }}
                 </x-link.category>
             @endforeach
         </div>
@@ -29,9 +28,8 @@
             </a>
             <div class="hidden md:hidden sm:pt-2 sm:pb-4 sm:flex sm:justify-end sm:space-x-2 lg:pt-2 lg:pb-4 lg:flex lg:justify-end lg:space-x-2 ">
                 @foreach($post->categories as $category)
-{{--                    <x-link.category href="{{ route('post.by-category', $category ) }}" class="hidden sm:inline-flex mx-1">--}}
-                    <x-link.category href="#">
-                        #{{ $category->title }}
+                    <x-link.category href="{{ route('posts.by-category', $category ) }}" class="hidden sm:inline-flex mx-1">
+                        {{ $category->title }}
                     </x-link.category>
                 @endforeach
             </div>

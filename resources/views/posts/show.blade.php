@@ -21,9 +21,8 @@
                 <x-card.default class="sm:p-6 md:p-8">
                     <div class="flex justify-end mb-4">
                         @foreach($post->categories as $category)
-{{--                            <x-links.category href="{{ route('post.by-category', $category ) }}" class="hidden sm:inline-flex px-1 uppercase">--}}
-                            <x-link.category href="#" class="hidden sm:inline-flex px-1 uppercase">
-                                #{{ $category->title }}
+                            <x-link.category href="/{{ route('post.by-category', $category ) }}" class="hidden sm:inline-flex px-1 uppercase">
+                                {{ $category->title }}
                             </x-link.category>
                         @endforeach
                     </div>
@@ -100,7 +99,7 @@
             <div class="hidden md:block">
                 <x-main-layout.heading>Categories</x-main-layout.heading>
                 <div class="py-4">
-
+                    <x-categories />
                 </div>
             </div>
 
