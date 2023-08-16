@@ -35,6 +35,9 @@
                         <th scope="col" class="px-6 py-3">
                             active
                         </th>
+                        <th scope="col" class="px-6 py-3">
+                            categories
+                        </th>
                         <th scope="col" class="px-6 py-3 flex justify-end space-x-4">
                             Actions
                         </th>
@@ -55,6 +58,13 @@
                                 @else
                                     <i class="fa-regular fa-circle-xmark text-red-700 fa-xl"></i>
                                 @endif
+                            </th>
+                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                @foreach($post->categories as $category)
+                                    <div class="hidden sm:inline-flex px-1">
+                                        {{ $category->title }}
+                                    </div>
+                                @endforeach
                             </th>
                             <td class="px-6 py-4 flex justify-end space-x-4">
                                 <x-link.btn-primary href="{{ route('admin.posts.edit' , $post) }}" class="px-2.5 py-2.5 text-xs font-medium"><i class="fa-solid fa-pen-to-square"></i></x-link.btn-primary>

@@ -78,6 +78,8 @@ class PostController extends Controller
 
         return view('posts.index', [
             'posts' => $posts,
+            'category' => $category
         ]);
     }
 }
+

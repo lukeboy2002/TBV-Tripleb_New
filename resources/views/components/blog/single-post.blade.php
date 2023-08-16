@@ -1,5 +1,3 @@
-@props(['post'])
-
 <article {{ $attributes->merge(['class' => 'bg-white border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700']) }}>
     <div class="relative">
         <a href="{{ route('posts.show', $post->slug) }}">

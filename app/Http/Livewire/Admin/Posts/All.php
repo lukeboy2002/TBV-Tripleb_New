@@ -47,6 +47,7 @@ class All extends Component
                 ->when($this->sortField, function ($query) {
                     $query->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc');
                 })
+                ->with('categories')
                 ->paginate(10),
         ]);
     }
