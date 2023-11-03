@@ -49,7 +49,7 @@ class HasInvitation
             if (! is_null($invitation->registered_at)) {
                 return redirect(route('login'))->with('error', 'The invitation link has already been used.');
             }
-    }
+        }
         return $next($request);
     }
 }

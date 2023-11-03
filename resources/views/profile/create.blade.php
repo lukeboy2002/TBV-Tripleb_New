@@ -49,9 +49,6 @@
                                 </x-form.label>
                             </div>
                         @endif
-{{--                        <div class="flex items-center justify-end">--}}
-{{--                            <x-link.primary href="{{ route('login') }}">Already registered?</x-link.primary>--}}
-{{--                        </div>--}}
                         <x-button.primary class="px-5 py-2.5 text-sm font-medium w-full">Register</x-button.primary>
                     </form>
                 </div>

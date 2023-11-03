@@ -109,10 +109,6 @@
                     <x-button.primary class="px-3 py-2 text-xs font-medium">Assign</x-button.primary>
                 </div>
             </form>
-
-
-
-
         </div>
     </x-card.default>
 </x-admin-layout>
